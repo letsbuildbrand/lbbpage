@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Lightbulb, Globe, ShieldCheck, TrendingUp, Headset } from "lucide-react"; // Importing icons for features
+import ScrollStack, { ScrollStackItem } from './ScrollStack'; // Import ScrollStack and ScrollStackItem
 
 const features = [
   {
@@ -32,26 +33,30 @@ const features = [
 
 const FeaturesSection = () => {
   return (
-    <section id="features" className="relative z-10 min-h-screen flex flex-col items-center justify-center bg-card bg-opacity-60 backdrop-blur-sm py-16 px-4 sm:px-8 border-t border-border">
+    <section id="features" className="relative z-10 bg-card bg-opacity-60 backdrop-blur-sm py-16 px-4 sm:px-8 border-t border-border">
       <h2 className="text-4xl sm:text-5xl font-extrabold text-foreground mb-12 text-center">Our Key Features</h2>
       <p className="text-lg sm:text-xl text-muted-foreground mb-10 max-w-3xl text-center leading-relaxed">
         Discover what makes our services stand out. We combine cutting-edge technology with creative expertise to deliver unparalleled results.
       </p>
-      <div className="w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {features.map((feature, index) => {
-          const Icon = feature.icon;
-          return (
-            <Card key={index} className="bg-background p-6 rounded-lg shadow-lg border border-border flex flex-col items-center text-center">
-              <CardHeader className="flex flex-col items-center p-0 mb-4">
-                <Icon className="h-12 w-12 text-primary mb-4" />
-                <CardTitle className="text-xl font-semibold text-foreground">{feature.title}</CardTitle>
-              </CardHeader>
-              <CardContent className="p-0">
-                <p className="text-muted-foreground text-base leading-relaxed">{feature.description}</p>
-              </CardContent>
-            </Card>
-          );
-        })}
+      <div className="w-full max-w-6xl mx-auto">
+        <ScrollStack useWindowScroll={true} itemDistance={50} itemStackDistance={20} blurAmount={2}>
+          {features.map((feature, index) => {
+            const Icon = feature.icon;
+            return (
+              <ScrollStackItem key={index}>
+                <Card className="bg-background p-6 rounded-lg shadow-lg border border-border flex flex-col items-center text-center">
+                  <CardHeader className="flex flex-col items-center p-0 mb-4">
+                    <Icon className="h-12 w-12 text-primary mb-4" />
+                    <CardTitle className="text-xl font-semibold text-foreground">{feature.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="p-0">
+                    <p className="text-muted-foreground text-base leading-relaxed">{feature.description}</p>
+                  </CardContent>
+                </Card>
+              </ScrollStackItem>
+            );
+          })}
+        </ScrollStack>
       </div>
     </section>
   );
