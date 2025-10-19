@@ -11,7 +11,7 @@ const Index = () => {
     <div className="min-h-screen flex flex-col relative overflow-hidden">
       {/* Aurora Background */}
       <Aurora
-        colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
+        colorStops={["#0A0A0A", "#1A2B3C", "#0A0A0A"]} // More subdued, dark, and GitHub-like colors
         blend={0.5}
         amplitude={1.0}
         speed={0.5}
