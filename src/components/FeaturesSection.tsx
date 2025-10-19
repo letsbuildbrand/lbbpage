@@ -39,7 +39,7 @@ const FeaturesSection = () => {
         Discover what makes our services stand out. We combine cutting-edge technology with creative expertise to deliver unparalleled results.
       </p>
       <div className="w-full max-w-6xl mx-auto">
-        <ScrollStack useWindowScroll={true} itemDistance={50} itemStackDistance={20} blurAmount={2}>
+        <ScrollStack useWindowScroll={true} itemDistance={50} itemStackDistance={20}>
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
