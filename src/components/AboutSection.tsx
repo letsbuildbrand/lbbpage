@@ -67,7 +67,7 @@ const AboutSection = () => {
             showUserInfo={true}
             enableTilt={true}
             enableMobileTilt={false}
-            className="w-full h-[400px] sm:h-[500px]" // Adjust size for responsiveness
+            className="w-[200px] h-[250px] sm:w-[250px] sm:h-[300px] mx-auto" // Decreased size for core team cards
           />
         ))}
       </div>
