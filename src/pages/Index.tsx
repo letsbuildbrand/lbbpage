@@ -1,5 +1,4 @@
 import { MadeWithDyad } from "@/components/made-with-dyad";
-import Aurora from "@/components/Aurora";
 import PillNav from "@/components/PillNav";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
@@ -19,16 +18,19 @@ const Index = () => {
 
   return (
     <div className="min-h-screen flex flex-col relative overflow-hidden">
-      {/* Splash Cursor */}
-      <SplashCursor />
-
-      {/* Aurora Background */}
-      <Aurora
-        colorStops={["#0A0A0A", "#1A2B3C", "#0A0A0A"]} // More subdued, dark, and GitHub-like colors
-        blend={0.5}
-        amplitude={1.0}
-        speed={0.5}
+      {/* Splash Cursor - Optimized for performance */}
+      <SplashCursor
+        SIM_RESOLUTION={64} // Reduced resolution
+        DYE_RESOLUTION={720} // Reduced resolution
+        CAPTURE_RESOLUTION={256} // Reduced resolution
+        DENSITY_DISSIPATION={2.0} // Slightly reduced dissipation
+        VELOCITY_DISSIPATION={1.0} // Slightly reduced dissipation
+        PRESSURE_ITERATIONS={10} // Reduced iterations
+        SPLAT_RADIUS={0.15} // Slightly reduced splat radius
+        SPLAT_FORCE={3000} // Reduced splat force
       />
+
+      {/* Aurora Background Removed */}
 
       {/* Navbar */}
       <PillNav
