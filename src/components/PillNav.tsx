@@ -257,7 +257,7 @@ const PillNav: React.FC<PillNavProps> = ({
               logoRef.current = el;
             }}
           >
-            <img src={logo} alt={logoAlt} ref={logoImgRef} />
+            <img src={logo} alt={logoAlt} ref={logoImgRef} loading="lazy" />
           </Link>
         ) : (
           <a
@@ -269,7 +269,7 @@ const PillNav: React.FC<PillNavProps> = ({
               logoRef.current = el;
             }}
           >
-            <img src={logo} alt={logoAlt} ref={logoImgRef} />
+            <img src={logo} alt={logoAlt} ref={logoImgRef} loading="lazy" />
           </a>
         )}
 
