@@ -2,11 +2,21 @@ import { MadeWithDyad } from "@/components/made-with-dyad";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Wrench, Globe } from "lucide-react";
+import Aurora from "@/components/Aurora"; // Import the Aurora component
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-gray-900 to-gray-800 text-white p-4 sm:p-8">
-      <Card className="w-full max-w-2xl bg-gray-800 border-gray-700 text-white shadow-2xl rounded-lg overflow-hidden">
+    <div className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden p-4 sm:p-8">
+      {/* Aurora Background */}
+      <Aurora
+        colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
+        blend={0.5}
+        amplitude={1.0}
+        speed={0.5}
+      />
+
+      {/* Content Card */}
+      <Card className="w-full max-w-2xl bg-gray-800 border-gray-700 text-white shadow-2xl rounded-lg overflow-hidden relative z-10">
         <CardHeader className="text-center p-6 sm:p-8">
           <div className="flex items-center justify-center mb-4">
             {/* Placeholder for your logo */}
