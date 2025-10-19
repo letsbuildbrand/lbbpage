@@ -82,14 +82,14 @@
   background-image:
     radial-gradient(
       farthest-side circle at var(--pointer-x) var(--pointer-y),
-      hsla(266, 100%, 90%, var(--card-opacity)) 4%,
-      hsla(266, 50%, 80%, calc(var(--card-opacity) * 0.75)) 10%,
-      hsla(266, 25%, 70%, calc(var(--card-opacity) * 0.5)) 50%,
-      hsla(266, 0%, 60%, 0) 100%
+      hsla(var(--primary), var(--card-opacity)) 4%,
+      hsla(var(--primary), calc(var(--card-opacity) * 0.75)) 10%,
+      hsla(var(--primary), calc(var(--card-opacity) * 0.5)) 50%,
+      hsla(var(--primary), 0) 100%
     ),
-    radial-gradient(35% 52% at 55% 20%, #00ffaac4 0%, #073aff00 100%),
-    radial-gradient(100% 100% at 50% 50%, #00c1ffff 1%, #073aff00 76%),
-    conic-gradient(from 124deg at 50% 50%, #c137ffff 0%, #07c6ffff 40%, #07c6ffff 60%, #c137ffff 100%);
+    radial-gradient(35% 52% at 55% 20%, hsla(var(--secondary), 0.7) 0%, hsla(var(--secondary), 0) 100%),
+    radial-gradient(100% 100% at 50% 50%, hsla(var(--primary), 0.8) 1%, hsla(var(--primary), 0) 76%),
+    conic-gradient(from 124deg at 50% 50%, hsla(var(--secondary), 0.9) 0%, hsla(var(--primary), 0.9) 40%, hsla(var(--primary), 0.9) 60%, hsla(var(--secondary), 0.9) 100%);
   overflow: hidden;
 }
 
@@ -150,12 +150,12 @@
     ),
     repeating-linear-gradient(
       var(--angle),
-      #0e152e 0%,
-      hsl(180, 10%, 60%) 3.8%,
-      hsl(180, 29%, 66%) 4.5%,
-      hsl(180, 10%, 60%) 5.2%,
-      #0e152e 10%,
-      #0e152e 12%
+      hsl(var(--background)) 0%, /* Using background */
+      hsl(var(--muted-foreground)) 3.8%, /* Using muted-foreground */
+      hsl(var(--foreground)) 4.5%, /* Using foreground */
+      hsl(var(--muted-foreground)) 5.2%, /* Using muted-foreground */
+      hsl(var(--background)) 10%, /* Using background */
+      hsl(var(--background)) 12% /* Using background */
     ),
     radial-gradient(
       farthest-corner circle at var(--pointer-x) var(--pointer-y),
@@ -208,7 +208,7 @@
       var(--sunpillar-2),
       var(--sunpillar-3)
     ),
-    radial-gradient(circle at var(--pointer-x) var(--pointer-y), hsl(0, 0%, 70%) 0%, hsla(0, 0%, 30%, 0.2) 90%),
+    radial-gradient(circle at var(--pointer-x) var(--pointer-y), hsl(var(--foreground)) 0%, hsla(var(--muted-foreground), 0.2) 90%), /* Using foreground and muted-foreground */
     var(--grain);
   background-size:
     250% 250%,
@@ -242,8 +242,8 @@
   overflow: hidden;
   background-image: radial-gradient(
     farthest-corner circle at var(--pointer-x) var(--pointer-y),
-    hsl(248, 25%, 80%) 12%,
-    hsla(207, 40%, 30%, 0.8) 90%
+    hsl(var(--primary)) 12%, /* Using primary */
+    hsla(var(--secondary), 0.8) 90% /* Using secondary */
   );
   mix-blend-mode: overlay;
   filter: brightness(0.8) contrast(1.2);
@@ -384,7 +384,7 @@
   margin: 0;
   font-size: min(5svh, 3em);
   margin: 0;
-  background-image: linear-gradient(to bottom, #fff, #6f6fbe);
+  background-image: linear-gradient(to bottom, hsl(var(--foreground)), hsl(var(--secondary))); /* Using theme colors */
   background-size: 1em 1.5em;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -399,7 +399,7 @@
   font-size: 16px;
   margin: 0 auto;
   width: min-content;
-  background-image: linear-gradient(to bottom, #fff, #4a4ac0);
+  background-image: linear-gradient(to bottom, hsl(var(--foreground)), hsl(var(--secondary))); /* Using theme colors */
   background-size: 1em 1.5em;
   -webkit-text-fill-color: transparent;
   background-clip: text;
