@@ -45,7 +45,7 @@ const adjust = (value: number, fromMin: number, fromMax: number, toMin: number, 
 const easeInOutCubic = (x: number): number => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
 
 const ProfileCardComponent: React.FC<ProfileCardProps> = ({
-  avatarUrl = '/public/placeholder.svg', // Default placeholder
+  avatarUrl = '/favicon-32x32.png', // Default placeholder
   iconUrl,
   grainUrl,
   behindGradient,

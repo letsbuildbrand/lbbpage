@@ -14,19 +14,19 @@ const testimonials: Testimonial[] = [
     name: "Sarah J.",
     title: "Marketing Director, TechCorp",
     quote: "Let's Build Brand transformed our marketing videos. Their editing is top-notch, and they truly understood our vision. Highly recommend!",
-    avatar: "/public/placeholder.svg",
+    avatar: "/favicon-32x32.png",
   },
   {
     name: "David L.",
     title: "CEO, Global Ventures",
     quote: "The website developed by Let's Build Brand exceeded our expectations. It's fast, responsive, and perfectly captures our brand identity. Excellent work!",
-    avatar: "/public/placeholder.svg",
+    avatar: "/favicon-32x32.png",
   },
   {
     name: "Aisha K.",
     title: "Founder, Creative Hub",
     quote: "Their team is incredibly professional and creative. They delivered our project ahead of schedule and the quality was outstanding. A pleasure to work with!",
-    avatar: "/public/placeholder.svg",
+    avatar: "/favicon-32x32.png",
   },
 ];
 

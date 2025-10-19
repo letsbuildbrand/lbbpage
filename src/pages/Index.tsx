@@ -34,7 +34,7 @@ const Index = () => {
 
       {/* Navbar */}
       <PillNav
-        logo="/public/placeholder.svg" // Using a placeholder logo
+        logo="/favicon-32x32.png" // Using the new favicon as the logo
         logoAlt="LBB Logo"
         items={navItems}
         activeHref="#home" // You might want to dynamically set this based on scroll position

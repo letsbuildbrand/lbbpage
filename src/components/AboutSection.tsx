@@ -3,8 +3,8 @@ import ProfileCard from "@/components/ProfileCard"; // Import ProfileCard
 
 const AboutSection = () => {
   const founders = [
-    { name: "Yadish", title: "Co-Founder", handle: "yadish_lbb", avatarUrl: "/public/placeholder.svg" },
-    { name: "Chaitanya", title: "Co-Founder", handle: "chaitanya_lbb", avatarUrl: "/public/placeholder.svg" },
+    { name: "Yadish", title: "Co-Founder", handle: "yadish_lbb", avatarUrl: "/favicon-32x32.png" },
+    { name: "Chaitanya", title: "Co-Founder", handle: "chaitanya_lbb", avatarUrl: "/favicon-32x32.png" },
   ];
 
   const coreTeam = []; // Removed all core team members
