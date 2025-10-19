@@ -4,6 +4,7 @@ import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
 import FeaturesSection from "@/components/FeaturesSection";
 import AboutSection from "@/components/AboutSection";
+import TestimonialsSection from "@/components/TestimonialsSection"; // Import TestimonialsSection
 import ContactSection from "@/components/ContactSection";
 import SplashCursor from "@/components/SplashCursor"; // Import SplashCursor
 
@@ -13,6 +14,7 @@ const Index = () => {
     { label: 'Services', href: '#services' },
     { label: 'Features', href: '#features' },
     { label: 'About', href: '#about' },
+    { label: 'Testimonials', href: '#testimonials' }, // Added Testimonials
     { label: 'Contact', href: '#contact' }
   ];
 
@@ -30,8 +32,6 @@ const Index = () => {
         SPLAT_FORCE={3000} // Reduced splat force
       />
 
-      {/* Aurora Background Removed */}
-
       {/* Navbar */}
       <PillNav
         logo="/public/placeholder.svg" // Using a placeholder logo
@@ -46,6 +46,7 @@ const Index = () => {
         <ServicesSection />
         <FeaturesSection />
         <AboutSection />
+        <TestimonialsSection /> {/* Added TestimonialsSection */}
         <ContactSection />
       </main>
 
