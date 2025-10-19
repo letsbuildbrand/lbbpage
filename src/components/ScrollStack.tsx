@@ -148,10 +148,10 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       }
 
       const newTransform = {
-        translateY: Math.round(translateY * 100) / 100,
-        scale: Math.round(scale * 1000) / 1000,
-        rotation: Math.round(rotation * 100) / 100,
-        blur: Math.round(blur * 100) / 100
+        translateY: translateY, // Removed Math.round
+        scale: scale,           // Removed Math.round
+        rotation: rotation,     // Removed Math.round
+        blur: blur              // blurAmount is 0, so this is fine
       };
 
       const lastTransform = lastTransformsRef.current.get(i);
