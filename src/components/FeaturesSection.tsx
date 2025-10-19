@@ -8,8 +8,8 @@ const FeaturesSection = () => {
       <p className="text-lg sm:text-xl text-muted-foreground mb-10 max-w-3xl text-center leading-relaxed">
         Discover what makes our services stand out. We combine cutting-edge technology with creative expertise to deliver unparalleled results.
       </p>
-      <div className="w-full max-w-3xl mx-auto h-[80vh] overflow-hidden"> {/* Added fixed height and overflow-hidden for ScrollStack */}
-        <ScrollStack useWindowScroll={false} itemDistance={150} itemStackDistance={40} blurAmount={2} rotationAmount={2}>
+      <div className="w-full max-w-3xl mx-auto"> {/* Removed fixed height and overflow-hidden */}
+        <ScrollStack useWindowScroll={true} itemDistance={150} itemStackDistance={40} blurAmount={2} rotationAmount={2}>
           <ScrollStackItem>
             <h2 className="text-primary">Innovative Video Production</h2>
             <p>From concept to final cut, we produce high-quality videos that capture attention and tell your brand's story effectively. Our team uses the latest editing techniques to deliver stunning visual narratives.</p>
