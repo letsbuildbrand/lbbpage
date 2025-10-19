@@ -1,12 +1,19 @@
 import { MadeWithDyad } from "@/components/made-with-dyad";
 import Aurora from "@/components/Aurora";
-import Navbar from "@/components/Navbar";
+import PillNav from "@/components/PillNav"; // Import PillNav
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
 import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
 
 const Index = () => {
+  const navItems = [
+    { label: 'Home', href: '#home' },
+    { label: 'Services', href: '#services' },
+    { label: 'About', href: '#about' },
+    { label: 'Contact', href: '#contact' }
+  ];
+
   return (
     <div className="min-h-screen flex flex-col relative overflow-hidden">
       {/* Aurora Background */}
@@ -18,7 +25,17 @@ const Index = () => {
       />
 
       {/* Navbar */}
-      <Navbar />
+      <PillNav
+        logo="/public/placeholder.svg" // Using a placeholder logo
+        logoAlt="LBB Logo"
+        items={navItems}
+        activeHref="#home" // You might want to dynamically set this based on scroll position
+        baseColor="hsl(var(--background))"
+        pillColor="hsl(var(--primary))"
+        hoveredPillTextColor="hsl(var(--primary-foreground))"
+        pillTextColor="hsl(var(--primary-foreground))"
+        className="mx-auto" // Center the nav
+      />
 
       {/* Main Content Sections */}
       <main className="relative z-10 flex-grow">
