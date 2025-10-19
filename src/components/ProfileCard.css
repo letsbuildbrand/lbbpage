@@ -368,7 +368,7 @@
     0.1px
   ) !important;
   z-index: 5;
-  mix-blend-mode: luminosity;
+  mix-blend-mode: normal; /* Changed from luminosity to normal */
 }
 
 .pc-details {
