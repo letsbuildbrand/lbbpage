@@ -15,11 +15,11 @@ const ContactSection = () => {
           </p>
           <div className="flex items-center text-lg">
             <Mail className="h-6 w-6 text-primary mr-4" />
-            <span>info@letsbuildbrand.com</span>
+            <span>letsbuildbrand.in@gmail.com</span>
           </div>
           <div className="flex items-center text-lg">
             <Phone className="h-6 w-6 text-primary mr-4" />
-            <span>+1 (555) 123-4567</span>
+            <span>+918605950846</span>
           </div>
           <div className="flex items-center text-lg">
             <MapPin className="h-6 w-6 text-primary mr-4" />
