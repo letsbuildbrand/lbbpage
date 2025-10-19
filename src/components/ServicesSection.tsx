@@ -1,4 +1,5 @@
-import CardSwap, { Card } from "@/components/CardSwap";
+import CardSwap from "@/components/CardSwap";
+import PixelCard from "@/components/PixelCard"; // Import PixelCard
 import { Video, Code, Lightbulb } from "lucide-react";
 
 const ServicesSection = () => {
@@ -23,21 +24,21 @@ const ServicesSection = () => {
             width={350}
             height={250}
           >
-            <Card className="bg-gradient-to-br from-blue-700 to-purple-800 p-6 flex flex-col items-center justify-center text-center shadow-xl border-border">
+            <PixelCard variant="blue" className="p-6 flex flex-col items-center justify-center text-center">
               <Video className="h-12 w-12 text-primary mb-4" />
               <h3 className="text-2xl font-bold text-foreground mb-2">Video Editing</h3>
               <p className="text-muted-foreground">Dynamic and engaging video content for all platforms.</p>
-            </Card>
-            <Card className="bg-gradient-to-br from-green-700 to-blue-800 p-6 flex flex-col items-center justify-center text-center shadow-xl border-border">
+            </PixelCard>
+            <PixelCard variant="yellow" className="p-6 flex flex-col items-center justify-center text-center">
               <Code className="h-12 w-12 text-primary mb-4" />
               <h3 className="text-2xl font-bold text-foreground mb-2">Website Development</h3>
               <p className="text-muted-foreground">Custom, responsive, and high-performance websites.</p>
-            </Card>
-            <Card className="bg-gradient-to-br from-red-700 to-orange-800 p-6 flex flex-col items-center justify-center text-center shadow-xl border-border">
+            </PixelCard>
+            <PixelCard variant="pink" className="p-6 flex flex-col items-center justify-center text-center">
               <Lightbulb className="h-12 w-12 text-primary mb-4" />
               <h3 className="text-2xl font-bold text-foreground mb-2">Creative Consulting</h3>
               <p className="text-muted-foreground">Strategic guidance to illuminate your brand's potential.</p>
-            </Card>
+            </PixelCard>
           </CardSwap>
         </div>
       </div>
