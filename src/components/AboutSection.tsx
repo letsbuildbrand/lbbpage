@@ -7,14 +7,7 @@ const AboutSection = () => {
     { name: "Chaitanya", title: "Co-Founder", handle: "chaitanya_lbb", avatarUrl: "/public/placeholder.svg" },
   ];
 
-  const coreTeam = [
-    { name: "Aditya", title: "Developer", handle: "aditya_lbb", avatarUrl: "/public/placeholder.svg" },
-    { name: "Ronit", title: "Designer", handle: "ronit_lbb", avatarUrl: "/public/placeholder.svg" },
-    { name: "Saumya", title: "Video Editor", handle: "saumya_lbb", avatarUrl: "/public/placeholder.svg" },
-    { name: "Dheeraj", title: "Marketing", handle: "dheeraj_lbb", avatarUrl: "/public/placeholder.svg" },
-    { name: "Hemant", title: "Content Creator", handle: "hemant_lbb", avatarUrl: "/public/placeholder.svg" },
-    { name: "Akshat", title: "Project Manager", handle: "akshat_lbb", avatarUrl: "/public/placeholder.svg" },
-  ];
+  const coreTeam = []; // Removed all core team members
 
   return (
     <section id="about" className="relative z-10 min-h-screen flex flex-col items-center justify-center bg-card bg-opacity-60 backdrop-blur-sm py-16 px-4 sm:px-8 border-t border-border">
@@ -55,22 +48,26 @@ const AboutSection = () => {
         ))}
       </div>
 
-      <h3 className="text-3xl sm:text-4xl font-bold text-foreground mt-10 mb-10 text-center">Core Team</h3>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-        {coreTeam.map((member, index) => (
-          <ProfileCard
-            key={index}
-            name={member.name}
-            title={member.title}
-            handle={member.handle}
-            avatarUrl={member.avatarUrl}
-            showUserInfo={true}
-            enableTilt={true}
-            enableMobileTilt={false}
-            className="w-[200px] h-[250px] sm:w-[250px] sm:h-[300px] mx-auto" // Decreased size for core team cards
-          />
-        ))}
-      </div>
+      {coreTeam.length > 0 && (
+        <>
+          <h3 className="text-3xl sm:text-4xl font-bold text-foreground mt-10 mb-10 text-center">Core Team</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {coreTeam.map((member, index) => (
+              <ProfileCard
+                key={index}
+                name={member.name}
+                title={member.title}
+                handle={member.handle}
+                avatarUrl={member.avatarUrl}
+                showUserInfo={true}
+                enableTilt={true}
+                enableMobileTilt={false}
+                className="w-[200px] h-[250px] sm:w-[250px] sm:h-[300px] mx-auto" // Decreased size for core team cards
+              />
+            ))}
+          </div>
+        </>
+      )}
     </section>
   );
 };
