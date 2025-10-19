@@ -1,6 +1,4 @@
-import CardSwap from "@/components/CardSwap";
-import PixelCard from "@/components/PixelCard"; // Import PixelCard
-import { Video, Code, Lightbulb } from "lucide-react";
+import MagicBento from "@/components/MagicBento"; // Import MagicBento
 
 const ServicesSection = () => {
   return (
@@ -15,31 +13,19 @@ const ServicesSection = () => {
             Explore our key offerings below and see how we can help you achieve your goals.
           </p>
         </div>
-        <div style={{ height: '600px', width: '100%', maxWidth: '500px', position: 'relative' }} className="lg:w-1/2 flex justify-center items-center">
-          <CardSwap
-            cardDistance={60}
-            verticalDistance={70}
-            delay={5000}
-            pauseOnHover={true}
-            width={350}
-            height={250}
-          >
-            <PixelCard variant="blue" className="p-6 flex flex-col items-center justify-center text-center">
-              <Video className="h-12 w-12 text-primary mb-4" />
-              <h3 className="text-2xl font-bold text-foreground mb-2">Video Editing</h3>
-              <p className="text-muted-foreground">Dynamic and engaging video content for all platforms.</p>
-            </PixelCard>
-            <PixelCard variant="yellow" className="p-6 flex flex-col items-center justify-center text-center">
-              <Code className="h-12 w-12 text-primary mb-4" />
-              <h3 className="text-2xl font-bold text-foreground mb-2">Website Development</h3>
-              <p className="text-muted-foreground">Custom, responsive, and high-performance websites.</p>
-            </PixelCard>
-            <PixelCard variant="pink" className="p-6 flex flex-col items-center justify-center text-center">
-              <Lightbulb className="h-12 w-12 text-primary mb-4" />
-              <h3 className="text-2xl font-bold text-foreground mb-2">Creative Consulting</h3>
-              <p className="text-muted-foreground">Strategic guidance to illuminate your brand's potential.</p>
-            </PixelCard>
-          </CardSwap>
+        <div className="lg:w-1/2 flex justify-center items-center">
+          <MagicBento
+            textAutoHide={true}
+            enableStars={true}
+            enableSpotlight={true}
+            enableBorderGlow={true}
+            enableTilt={true}
+            enableMagnetism={true}
+            clickEffect={true}
+            spotlightRadius={300}
+            particleCount={12}
+            glowColor="132, 0, 255" // Using a vibrant purple-blue
+          />
         </div>
       </div>
     </section>
