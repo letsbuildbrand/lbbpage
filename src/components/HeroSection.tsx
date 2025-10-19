@@ -9,7 +9,7 @@ const HeroSection = () => {
         <div className="flex items-center justify-center mb-6">
           {/* Wrench icon with gradient and subtle pulse animation */}
           <Wrench className="h-16 w-16 mr-4 animate-pulse text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent" />
-          <h1 className="text-5xl sm:text-7xl font-extrabold tracking-tight leading-tight bg-gradient-to-r from-primary to-accent text-transparent bg-clip-text">
+          <h1 className="text-5xl sm:text-7xl font-extrabold tracking-tight leading-tight text-foreground">
             Let's Build Brand
           </h1>
         </div>
