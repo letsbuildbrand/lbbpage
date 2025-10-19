@@ -11,21 +11,39 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    name: "Sarah J.",
-    title: "Marketing Director, TechCorp",
-    quote: "Let's Build Brand transformed our marketing videos. Their editing is top-notch, and they truly understood our vision. Highly recommend!",
+    name: "Erick",
+    title: "Client",
+    quote: "The video edits were absolutely insane -they completely blew me away. This team doesn't just deliver; they surprise you with their level of expertise and dedication. The quality was perfect, and their supportive attitude made the collaboration seamless. Highly recommend for anyone looking for exceptional results.",
     avatar: "/favicon-32x32.png",
   },
   {
-    name: "David L.",
-    title: "CEO, Global Ventures",
-    quote: "The website developed by Let's Build Brand exceeded our expectations. It's fast, responsive, and perfectly captures our brand identity. Excellent work!",
+    name: "Joni",
+    title: "Client",
+    quote: "I'm speechless. What this team created wasn't just a video, it was a true piece of art. Beyond the phenomenal editing, what really stood out was their personal touch. They helped with strategy, gave inspiration for how to shoot, and offered incredible support through the entire process, and their dedicated, personal support at every step is what makes them true partners in the creative process. An amazing team to work with.",
     avatar: "/favicon-32x32.png",
   },
   {
-    name: "Aisha K.",
-    title: "Founder, Creative Hub",
-    quote: "Their team is incredibly professional and creative. They delivered our project ahead of schedule and the quality was outstanding. A pleasure to work with!",
+    name: "Innerlink",
+    title: "Client",
+    quote: "We gave them an incredibly demanding project: 60 videos in just 10 days. Not only did they deliver on time, but the quality was exceptional. Their systematic process, which included three rounds of quality checks, ensured every video was perfect. This team is reliable, professional, and their ability to deliver high-quality work on a tight deadline is simply unmatched.",
+    avatar: "/favicon-32x32.png",
+  },
+  {
+    name: "Avi Javeri",
+    title: "Client",
+    quote: "They are the complete package. From developing a winning content strategy and scripts to delivering flawless video edits, they managed it all. But what truly sets them apart is their genuine support. They were true partners who hand-held me through the process and provided the encouragement I needed to be consistent. My channel's growth is a direct result of their expertise.",
+    avatar: "/favicon-32x32.png",
+  },
+  {
+    name: "Stephanie",
+    title: "Client",
+    quote: "I dedicate my incredible growth entirely to the team at Let's Build Brand. When we started 4 months ago, I was at 10k followers; today, I'm at 550k. This would have been impossible without their expert strategy and their amazing video editing team, who consistently delivered for me month after month. They understood my vision and executed it perfectly.",
+    avatar: "/favicon-32x32.png",
+  },
+  {
+    name: "Johann",
+    title: "Client",
+    quote: "It's rare to find a creative team that truly listens and executes with such precision. They took my vision for my Taekwon-Do content and captured the energy and discipline of the art form in every edit. The final videos were exactly my dream style, only better. I am so happy with the results and their professionalism.",
     avatar: "/favicon-32x32.png",
   },
 ];
