@@ -36,11 +36,6 @@ const Index = () => {
         logoAlt="LBB Logo"
         items={navItems}
         activeHref="#home" // You might want to dynamically set this based on scroll position
-        baseColor="hsl(var(--background))"
-        pillColor="hsl(var(--primary))"
-        hoveredPillTextColor="hsl(var(--primary-foreground))"
-        pillTextColor="hsl(var(--primary-foreground))"
-        className="mx-auto" // Center the nav
       />
 
       {/* Main Content Sections */}
