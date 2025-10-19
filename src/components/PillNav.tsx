@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import './PillNav.css';
+import { ThemeToggle } from './ThemeToggle'; // Import the ThemeToggle component
 
 export type PillNavItem = {
   label: string;
@@ -311,17 +312,23 @@ const PillNav: React.FC<PillNavProps> = ({
               </li>
             ))}
           </ul>
+          <div className="theme-toggle-desktop">
+            <ThemeToggle />
+          </div>
         </div>
 
-        <button
-          className="mobile-menu-button mobile-only"
-          onClick={toggleMobileMenu}
-          aria-label="Toggle menu"
-          ref={hamburgerRef}
-        >
-          <span className="hamburger-line" />
-          <span className="hamburger-line" />
-        </button>
+        <div className="mobile-controls mobile-only">
+          <ThemeToggle />
+          <button
+            className="mobile-menu-button"
+            onClick={toggleMobileMenu}
+            aria-label="Toggle menu"
+            ref={hamburgerRef}
+          >
+            <span className="hamburger-line" />
+            <span className="hamburger-line" />
+          </button>
+        </div>
       </nav>
 
       <div className="mobile-menu-popover mobile-only" ref={mobileMenuRef}>

@@ -172,7 +172,9 @@
 }
 
 .desktop-only {
-  display: block;
+  display: flex; /* Changed to flex to align theme toggle */
+  align-items: center;
+  gap: var(--pill-gap); /* Maintain gap with theme toggle */
 }
 
 .mobile-only {
@@ -185,7 +187,9 @@
   }
 
   .mobile-only {
-    display: block;
+    display: flex; /* Changed to flex to align theme toggle and hamburger */
+    align-items: center;
+    gap: 8px; /* Space between theme toggle and hamburger */
   }
 }
 
@@ -196,7 +200,7 @@
   background: hsla(var(--background), 0.8); /* Translucent background */
   border: 1px solid hsla(var(--border), 0.3);
   box-shadow: 0 0 10px hsla(var(--primary), 0.2);
-  display: none;
+  display: flex; /* Ensure it's flex for lines */
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -205,12 +209,6 @@
   padding: 0;
   position: relative;
   transition: all 0.3s ease;
-}
-
-@media (max-width: 768px) {
-  .mobile-menu-button {
-    display: flex;
-  }
 }
 
 .hamburger-line {
@@ -262,4 +260,24 @@
   cursor: pointer;
   background-color: hsla(var(--primary), 0.2); /* Hover background */
   color: hsl(var(--primary-foreground)); /* Hover text color */
+}
+
+/* Styling for the ThemeToggle button to fit the PillNav aesthetic */
+.theme-toggle-desktop .h-9.w-9,
+.mobile-controls .h-9.w-9 {
+  background: hsla(var(--background), 0.8);
+  border: 1px solid hsla(var(--border), 0.3);
+  box-shadow: 0 0 10px hsla(var(--primary), 0.2);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle-desktop .h-9.w-9:hover,
+.mobile-controls .h-9.w-9:hover {
+  background: hsla(var(--primary), 0.2);
+  box-shadow: 0 0 10px hsla(var(--primary), 0.5);
+}
+
+.theme-toggle-desktop {
+  margin-left: var(--pill-gap); /* Space from last nav item */
 }
