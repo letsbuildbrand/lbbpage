@@ -7,8 +7,8 @@ const HeroSection = () => {
     <section id="home" className="relative z-10 min-h-screen flex flex-col items-center justify-center text-center p-4 sm:p-8 pt-24">
       <div className="max-w-4xl mx-auto">
         <div className="flex items-center justify-center mb-6">
-          {/* Wrench icon with gradient and subtle pulse animation */}
-          <Wrench className="h-16 w-16 mr-4 animate-pulse text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent" />
+          {/* Wrench icon with solid primary color */}
+          <Wrench className="h-16 w-16 mr-4 animate-pulse text-primary" />
           <h1 className="text-5xl sm:text-7xl font-extrabold tracking-tight leading-tight text-foreground">
             Let's Build Brand
           </h1>
