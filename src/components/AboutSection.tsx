@@ -1,6 +1,21 @@
 import { Users, Star } from "lucide-react";
+import ProfileCard from "@/components/ProfileCard"; // Import ProfileCard
 
 const AboutSection = () => {
+  const founders = [
+    { name: "Yadish", title: "Co-Founder", handle: "yadish_lbb", avatarUrl: "/public/placeholder.svg" },
+    { name: "Chaitanya", title: "Co-Founder", handle: "chaitanya_lbb", avatarUrl: "/public/placeholder.svg" },
+  ];
+
+  const coreTeam = [
+    { name: "Aditya", title: "Developer", handle: "aditya_lbb", avatarUrl: "/public/placeholder.svg" },
+    { name: "Ronit", title: "Designer", handle: "ronit_lbb", avatarUrl: "/public/placeholder.svg" },
+    { name: "Saumya", title: "Video Editor", handle: "saumya_lbb", avatarUrl: "/public/placeholder.svg" },
+    { name: "Dheeraj", title: "Marketing", handle: "dheeraj_lbb", avatarUrl: "/public/placeholder.svg" },
+    { name: "Hemant", title: "Content Creator", handle: "hemant_lbb", avatarUrl: "/public/placeholder.svg" },
+    { name: "Akshat", title: "Project Manager", handle: "akshat_lbb", avatarUrl: "/public/placeholder.svg" },
+  ];
+
   return (
     <section id="about" className="relative z-10 min-h-screen flex flex-col items-center justify-center bg-card bg-opacity-60 backdrop-blur-sm py-16 px-4 sm:px-8 border-t border-border">
       <h2 className="text-4xl sm:text-5xl font-extrabold text-foreground mb-12 text-center">About LBB</h2>
@@ -21,6 +36,40 @@ const AboutSection = () => {
         <p className="text-lg sm:text-xl text-muted-foreground mt-8 leading-relaxed">
           Our expertise spans across dynamic video editing and robust website development, ensuring your brand stands out in a competitive global market. We pride ourselves on clear communication, timely delivery, and results that speak for themselves.
         </p>
+      </div>
+
+      <h3 className="text-3xl sm:text-4xl font-bold text-foreground mt-20 mb-10 text-center">Our Founders</h3>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-5xl mx-auto mb-20">
+        {founders.map((member, index) => (
+          <ProfileCard
+            key={index}
+            name={member.name}
+            title={member.title}
+            handle={member.handle}
+            avatarUrl={member.avatarUrl}
+            showUserInfo={true}
+            enableTilt={true}
+            enableMobileTilt={false}
+            className="w-full h-[400px] sm:h-[500px]" // Adjust size for responsiveness
+          />
+        ))}
+      </div>
+
+      <h3 className="text-3xl sm:text-4xl font-bold text-foreground mt-10 mb-10 text-center">Core Team</h3>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        {coreTeam.map((member, index) => (
+          <ProfileCard
+            key={index}
+            name={member.name}
+            title={member.title}
+            handle={member.handle}
+            avatarUrl={member.avatarUrl}
+            showUserInfo={true}
+            enableTilt={true}
+            enableMobileTilt={false}
+            className="w-full h-[400px] sm:h-[500px]" // Adjust size for responsiveness
+          />
+        ))}
       </div>
     </section>
   );
