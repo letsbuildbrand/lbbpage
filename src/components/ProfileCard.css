@@ -111,7 +111,7 @@
   inset: 1px;
   position: absolute;
   background-image: var(--inner-gradient);
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: hsl(var(--card)); /* Changed from rgba(0, 0, 0, 0.9) */
   transform: translate3d(0, 0, 0.01px);
 }
 
@@ -289,9 +289,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(255, 255, 255, 0.1);
+  background: hsla(var(--card-foreground), 0.1); /* Changed from rgba(255, 255, 255, 0.1) */
   backdrop-filter: blur(30px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid hsla(var(--border), 0.1); /* Changed from rgba(255, 255, 255, 0.1) */
   border-radius: 15px;
   padding: 12px 14px;
   pointer-events: auto;
@@ -308,7 +308,7 @@
   height: 48px;
   border-radius: 50%;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid hsla(var(--border), 0.1); /* Changed from rgba(255, 255, 255, 0.1) */
   flex-shrink: 0;
 }
 
@@ -329,30 +329,30 @@
 .pc-handle {
   font-size: 14px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.9);
+  color: hsla(var(--card-foreground), 0.9); /* Changed from rgba(255, 255, 255, 0.9) */
   line-height: 1;
 }
 
 .pc-status {
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.7);
+  color: hsla(var(--card-foreground), 0.7); /* Changed from rgba(255, 255, 255, 0.7) */
   line-height: 1;
 }
 
 .pc-contact-btn {
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid hsla(var(--border), 0.1); /* Changed from rgba(255, 255, 255, 0.1) */
   border-radius: 8px;
   padding: 8px 16px;
   font-size: 14px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.9);
+  color: hsla(var(--card-foreground), 0.9); /* Changed from rgba(255, 255, 255, 0.9) */
   cursor: pointer;
   transition: all 0.2s ease;
   backdrop-filter: blur(10px);
 }
 
 .pc-contact-btn:hover {
-  border-color: rgba(255, 255, 255, 0.4);
+  border-color: hsla(var(--border), 0.4); /* Changed from rgba(255, 255, 255, 0.4) */
   transform: translateY(-1px);
   transition: all 0.2s ease;
 }
