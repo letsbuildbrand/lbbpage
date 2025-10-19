@@ -3,7 +3,7 @@ import ProfileCard from "@/components/ProfileCard"; // Import ProfileCard
 
 const AboutSection = () => {
   const founders = [
-    { name: "Yadish", title: "Co-Founder", handle: "yadish_lbb", avatarUrl: "/favicon-32x32.png" },
+    { name: "Yadish", title: "Co-Founder", handle: "yadish_lbb", avatarUrl: "/yadish.jpg" },
     { name: "Chaitanya", title: "Co-Founder", handle: "chaitanya_lbb", avatarUrl: "/favicon-32x32.png" },
   ];
 
