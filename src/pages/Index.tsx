@@ -1,12 +1,12 @@
-import { MadeWithDyad } from "@/components/made-with-dyad";
 import PillNav from "@/components/PillNav";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
 import FeaturesSection from "@/components/FeaturesSection";
 import AboutSection from "@/components/AboutSection";
-import TestimonialsSection from "@/components/TestimonialsSection"; // Import TestimonialsSection
+import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
-import SplashCursor from "@/components/SplashCursor"; // Import SplashCursor
+import SplashCursor from "@/components/SplashCursor";
+import Footer from "@/components/Footer"; // Import the new Footer component
 
 const Index = () => {
   const navItems = [
@@ -14,7 +14,7 @@ const Index = () => {
     { label: 'Services', href: '#services' },
     { label: 'Features', href: '#features' },
     { label: 'About', href: '#about' },
-    { label: 'Testimonials', href: '#testimonials' }, // Added Testimonials
+    { label: 'Testimonials', href: '#testimonials' },
     { label: 'Contact', href: '#contact' }
   ];
 
@@ -41,17 +41,17 @@ const Index = () => {
       />
 
       {/* Main Content Sections */}
-      <main className="relative z-10 flex-grow">
+      <main className="relative z-10 flex-grow pt-24"> {/* Added pt-24 to account for fixed navbar height and top spacing */}
         <HeroSection />
         <ServicesSection />
         <FeaturesSection />
         <AboutSection />
-        <TestimonialsSection /> {/* Added TestimonialsSection */}
+        <TestimonialsSection />
         <ContactSection />
       </main>
 
       {/* Footer */}
-      <MadeWithDyad />
+      <Footer />
     </div>
   );
 };

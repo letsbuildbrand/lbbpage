@@ -1,6 +1,6 @@
 .pill-nav-container {
-  position: absolute;
-  top: 1em;
+  position: fixed; /* Changed from absolute to fixed */
+  top: 2em; /* Added space above the navbar */
   left: 50%; /* Center horizontally */
   transform: translateX(-50%); /* Adjust for true centering */
   z-index: 99;
@@ -11,6 +11,7 @@
     width: 100%;
     left: 0;
     transform: translateX(0); /* Remove centering on mobile if full width */
+    top: 1em; /* Adjust top for mobile */
   }
 }
 
