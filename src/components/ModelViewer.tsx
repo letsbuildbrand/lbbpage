@@ -61,7 +61,6 @@ const Loader: FC<{ placeholderSrc?: string }> = ({ placeholderSrc }) => {
       ) : (
         `${Math.round(progress)} %`
       )}
-      {/* Removed temporary Box for debugging */}
     </Html>
   );
 };
@@ -136,20 +135,16 @@ const ModelInner: FC<ModelInnerProps> = ({
   const tHov = useRef({ x: 0, y: 0 });
   const cHov = useRef({ x: 0, y: 0 });
 
-  // FIX: Correctly extract the file extension by splitting by '?' first
   const ext = useMemo(() => url.split('?')[0].split('.').pop()!.toLowerCase(), [url]);
   const content = useMemo<THREE.Object3D | null>(() => {
     try {
       if (ext === 'glb' || ext === 'gltf') {
-        console.log(`Attempting to load GLTF/GLB model from: ${url}`);
         return useGLTF(url).scene.clone();
       }
       if (ext === 'fbx') {
-        console.log(`Attempting to load FBX model from: ${url}`);
         return useFBX(url).clone();
       }
       if (ext === 'obj') {
-        console.log(`Attempting to load OBJ model from: ${url}`);
         return useLoader(OBJLoader, url).clone();
       }
       console.error('Unsupported model format:', ext);
@@ -163,10 +158,8 @@ const ModelInner: FC<ModelInnerProps> = ({
   const pivotW = useRef(new THREE.Vector3());
   useLayoutEffect(() => {
     if (!content) {
-      console.log('Model content is null, skipping layout effect for processing.');
       return;
     }
-    console.log('Model content processed successfully:', content);
     const g = inner.current;
     g.updateWorldMatrix(true, true);
 
@@ -442,8 +435,7 @@ const ModelViewer: FC<ViewerProps> = ({
   autoRotateSpeed = 0.35,
   onModelLoaded
 }) => {
-  // FIX: Preload the cleaned URL
-  useEffect(() => void useGLTF.preload(url.split('?')[0]), [url]);
+  // Removed redundant useGLTF.preload(url) call
   const pivot = useRef(new THREE.Vector3()).current;
   const contactRef = useRef<THREE.Mesh>(null);
   const rendererRef = useRef<THREE.WebGLRenderer>(null);
@@ -516,7 +508,7 @@ const ModelViewer: FC<ViewerProps> = ({
           sceneRef.current = scene;
           cameraRef.current = camera;
           gl.toneMapping = THREE.ACESFilmicToneMapping;
-          gl.outputColorSpace = THREE.SRGBColorSpace; // Re-enabled
+          gl.outputColorSpace = THREE.SRGBColorSpace;
         }}
         camera={{ fov: 50, position: [0, 0, camZ], near: 0.01, far: 100 }}
         style={{ touchAction: 'pan-y pinch-zoom' }}
