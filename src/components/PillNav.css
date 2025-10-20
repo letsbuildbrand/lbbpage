@@ -1,3 +1,26 @@
+/* Keyframes for the animated border effect */
+@keyframes star-movement-bottom {
+  0% {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-100%, 0%);
+    opacity: 0;
+  }
+}
+
+@keyframes star-movement-top {
+  0% {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(100%, 0%);
+    opacity: 0;
+  }
+}
+
 .pill-nav-container {
   position: fixed; /* Changed from absolute to fixed */
   top: 2em; /* Added space above the navbar */
@@ -46,6 +69,38 @@
   border: 1px solid hsla(var(--border), 0.3); /* Subtle border */
   box-shadow: 0 0 15px hsla(var(--primary), 0.3), 0 0 30px hsla(var(--primary), 0.1); /* Glowing shadow */
   transition: all 0.3s ease;
+  overflow: hidden; /* Ensure gradients are clipped */
+}
+
+.pill-nav-items::before,
+.pill-nav-items::after {
+  content: '';
+  position: absolute;
+  opacity: 0.7;
+  border-radius: 9999px; /* Match parent border-radius for pill shape */
+  background: radial-gradient(circle, hsl(var(--primary)), transparent 10%);
+  z-index: -1; /* Behind the actual content and border */
+  will-change: transform, opacity;
+  animation-duration: 8s; /* Same as StarBorder */
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.pill-nav-items::before { /* Bottom gradient */
+  width: 150%; /* Make it wider than the element */
+  height: 100%;
+  bottom: -25%; /* Position it below the element */
+  right: -25%; /* Start from the right */
+  animation-name: star-movement-bottom;
+}
+
+.pill-nav-items::after { /* Top gradient */
+  width: 150%; /* Make it wider than the element */
+  height: 100%;
+  top: -25%; /* Position it above the element */
+  left: -25%; /* Start from the left */
+  animation-name: star-movement-top;
 }
 
 .pill-logo {
@@ -61,6 +116,7 @@
   border: 1px solid hsla(var(--border), 0.3);
   box-shadow: 0 0 10px hsla(var(--primary), 0.2);
   transition: all 0.3s ease;
+  position: relative; /* Ensure pseudo-elements are positioned relative to this */
 }
 
 .pill-logo img {
@@ -69,6 +125,37 @@
   object-fit: cover;
   display: block;
   border-radius: 50%; /* Added to make the image itself circular */
+}
+
+.pill-logo::before,
+.pill-logo::after {
+  content: '';
+  position: absolute;
+  opacity: 0.7;
+  border-radius: 50%; /* Match parent border-radius for circular shape */
+  background: radial-gradient(circle, hsl(var(--primary)), transparent 10%);
+  z-index: -1; /* Behind the actual content and border */
+  will-change: transform, opacity;
+  animation-duration: 8s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.pill-logo::before { /* Bottom gradient */
+  width: 200%; /* Larger than parent */
+  height: 100%;
+  bottom: -50%;
+  right: -50%;
+  animation-name: star-movement-bottom;
+}
+
+.pill-logo::after { /* Top gradient */
+  width: 200%; /* Larger than parent */
+  height: 100%;
+  top: -50%;
+  left: -50%;
+  animation-name: star-movement-top;
 }
 
 .pill-list {
