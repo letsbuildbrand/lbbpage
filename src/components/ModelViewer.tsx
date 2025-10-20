@@ -505,7 +505,7 @@ const ModelViewer: FC<ViewerProps> = ({
       <Canvas
         shadows
         frameloop="demand"
-        gl={{ preserveDrawingBuffer: true }}
+        // Removed gl prop to use default WebGL context settings
         onCreated={({ gl, scene, camera }) => {
           rendererRef.current = gl;
           sceneRef.current = scene;
