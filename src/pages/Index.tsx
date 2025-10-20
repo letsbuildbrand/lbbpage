@@ -7,7 +7,7 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
 // import SplashCursor from "@/components/SplashCursor"; // Temporarily removed
 import Footer from "@/components/Footer";
-import ModelViewer from "@/components/ModelViewer";
+// import ModelViewer from "@/components/ModelViewer"; // Commented out
 
 const Index = () => {
   const navItems = [
@@ -45,7 +45,7 @@ const Index = () => {
       <main className="relative z-10 flex-grow pt-24">
         <HeroSection />
         {/* Example ModelViewer usage */}
-        <div className="flex justify-center items-center py-16">
+        {/* <div className="flex justify-center items-center py-16">
           <ModelViewer
             url="https://assets.science.nasa.gov/content/dam/science/psd/solar/2023/09/e/Earth_1_12756.glb?emrc=68f60299b5bc0"
             width={400}
@@ -56,7 +56,7 @@ const Index = () => {
             enableManualZoom={true}
             environmentPreset="studio"
           />
-        </div>
+        </div> */}
         <ServicesSection />
         <FeaturesSection />
         <AboutSection />
