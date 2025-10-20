@@ -150,7 +150,7 @@ const ModelInner: FC<ModelInnerProps> = ({
     const g = inner.current;
     g.updateWorldMatrix(true, true);
 
-    const sphere = new THREE.Box3().setFromObject(g).getBoundingSphere(new THREE.Sphere());
+    const sphere = new new THREE.Box3().setFromObject(g).getBoundingSphere(new THREE.Sphere());
     const s = 1 / (sphere.radius * 2);
     g.position.set(-sphere.center.x, -sphere.center.y, -sphere.center.z);
     g.scale.setScalar(s);
@@ -175,8 +175,8 @@ const ModelInner: FC<ModelInnerProps> = ({
 
     if (autoFrame && (camera as THREE.PerspectiveCamera).isPerspectiveCamera) {
       const persp = camera as THREE.PerspectiveCamera;
-      const fitR = sphere.radius * s;
-      const d = (fitR * 1.2) / Math.sin((persp.fov * Math.PI) / 180 / 2);
+      const fitR = sphere.radius * 1.2; // Adjusted to use sphere.radius directly
+      const d = (fitR) / Math.sin((persp.fov * Math.PI) / 180 / 2); // Simplified calculation
       persp.position.set(pivotW.current.x, pivotW.current.y, pivotW.current.z + d);
       persp.near = d / 10;
       persp.far = d * 10;
@@ -205,7 +205,7 @@ const ModelInner: FC<ModelInnerProps> = ({
       }, 16);
       return () => clearInterval(id);
     } else onLoaded?.();
-  }, [content]);
+  }, [content, autoFrame, camera, fadeIn, initPitch, initYaw, pivot]); // Added dependencies
 
   useEffect(() => {
     if (!enableManualRotation || isTouch) return;
@@ -242,7 +242,7 @@ const ModelInner: FC<ModelInnerProps> = ({
   }, [gl, enableManualRotation]);
 
   useEffect(() => {
-    if (!isTouch) return;
+    if (isTouch) return;
     const el = gl.domElement;
     const pts = new Map<number, { x: number; y: number }>();
     type Mode = 'idle' | 'decide' | 'rotate' | 'pinch';
@@ -327,7 +327,7 @@ const ModelInner: FC<ModelInnerProps> = ({
       window.removeEventListener('pointerup', up);
       window.removeEventListener('pointercancel', up);
     };
-  }, [gl, enableManualRotation, enableManualZoom, minZoom, maxZoom]);
+  }, [gl, enableManualRotation, enableManualZoom, minZoom, maxZoom, camera]); // Added camera to dependencies
 
   useEffect(() => {
     if (isTouch) return;
@@ -344,6 +344,8 @@ const ModelInner: FC<ModelInnerProps> = ({
   }, [enableMouseParallax, enableHoverRotation]);
 
   useFrame((_, dt) => {
+    if (!outer.current) return; // Safety check added here
+
     let need = false;
     cPar.current.x += (tPar.current.x - cPar.current.x) * PARALLAX_EASE;
     cPar.current.y += (tPar.current.y - cPar.current.y) * PARALLAX_EASE;
