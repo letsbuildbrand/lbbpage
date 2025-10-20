@@ -7,7 +7,11 @@ export default defineConfig(() => ({
     host: "::",
     port: 8080,
   },
-  plugins: [react()], // Removed dyadComponentTagger()
+  plugins: [
+    react({
+      jsxRuntime: 'automatic' // Explicitly set JSX runtime for SWC
+    })
+  ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
