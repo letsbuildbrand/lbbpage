@@ -505,15 +505,14 @@ const ModelViewer: FC<ViewerProps> = ({
       <Canvas
         shadows
         frameloop="demand"
-        gl={{
-          preserveDrawingBuffer: true,
-          toneMapping: THREE.ACESFilmicToneMapping,
-          // Removed: outputColorSpace: THREE.SRGBColorSpace,
-        }}
+        gl={{ preserveDrawingBuffer: true }}
         onCreated={({ gl, scene, camera }) => {
           rendererRef.current = gl;
           sceneRef.current = scene;
           cameraRef.current = camera;
+          // Set rendering properties after creation
+          gl.toneMapping = THREE.ACESFilmicToneMapping;
+          gl.toneMappingExposure = 1;
         }}
         camera={{ fov: 50, position: [0, 0, camZ], near: 0.01, far: 100 }}
         style={{ touchAction: 'pan-y pinch-zoom' }}
