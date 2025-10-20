@@ -30,17 +30,19 @@ const HeroSection = () => {
 
         <div className="lg:order-2 w-full lg:w-1/2 flex justify-center">
           <ModelViewer
-            url="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/main/2.0/ToyCar/glTF-Binary/ToyCar.glb"
+            url="https://assets.science.nasa.gov/content/dam/science/psd/solar/2023/09/e/Earth_1_12756.glb?emrc=68f60299b5bc0"
             width={500}
             height={500}
             autoRotate={true}
-            autoRotateSpeed={0.5}
+            autoRotateSpeed={0.2} {/* Adjusted for a slower, more natural Earth rotation */}
             enableManualRotation={true}
             enableManualZoom={true}
-            environmentPreset="studio"
+            environmentPreset="city" {/* Changed to 'city' for a more open, sky-like environment */}
             showScreenshotButton={false}
-            defaultZoom={1.5}
-            modelYOffset={0.1}
+            defaultZoom={1.0} {/* Adjusted zoom to better fit the Earth model */}
+            modelYOffset={0.0} {/* Reset Y offset, might need fine-tuning */}
+            defaultRotationX={-20} {/* Slight tilt for Earth */}
+            defaultRotationY={45} {/* Initial rotation */}
           />
         </div>
       </div>
