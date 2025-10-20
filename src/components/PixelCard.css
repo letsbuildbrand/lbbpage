@@ -7,9 +7,11 @@
 .pixel-card {
   position: relative;
   overflow: hidden;
-  display: grid;
-  place-items: center;
-  aspect-ratio: 4 / 5; /* Keep aspect ratio, but let parent control width/height */
+  display: flex; /* Changed from grid */
+  flex-direction: column; /* Added */
+  align-items: center; /* Added */
+  justify-content: center; /* Added */
+  /* Removed aspect-ratio: 4 / 5; */
   border: 1px solid hsl(var(--border)); /* Use theme border */
   border-radius: 25px;
   isolation: isolate;

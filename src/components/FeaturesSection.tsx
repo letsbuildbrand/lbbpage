@@ -3,6 +3,15 @@
 import React from 'react';
 import { Lightbulb, Globe, ShieldCheck, TrendingUp, Headset } from "lucide-react";
 import PixelCard from './PixelCard'; // Import PixelCard
+import { Button } from "@/components/ui/button"; // Import Button
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"; // Import Dialog components
 
 const features = [
   {
@@ -32,6 +41,12 @@ const features = [
   },
 ];
 
+// Helper function to get a short description
+const getShortDescription = (description: string, maxSentences: number = 2) => {
+  const sentences = description.split(/(?<=[.!?])\s+/); // Split by sentence-ending punctuation followed by space
+  return sentences.slice(0, maxSentences).join(' ') + (sentences.length > maxSentences ? '...' : '');
+};
+
 const FeaturesSection = () => {
   // Define classes for bento layout spanning
   const cardLayoutClasses = [
@@ -59,7 +74,22 @@ const FeaturesSection = () => {
             >
               <Icon className="h-12 w-12 text-primary mb-4" />
               <h3 className="text-xl font-semibold text-foreground mb-2">{feature.title}</h3>
-              <p className="text-muted-foreground text-base leading-relaxed">{feature.description}</p>
+              <p className="text-muted-foreground text-base leading-relaxed mb-4">
+                {getShortDescription(feature.description)}
+              </p>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant="link" className="text-primary hover:text-primary/80 p-0 h-auto">Read More</Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[425px]">
+                  <DialogHeader>
+                    <DialogTitle>{feature.title}</DialogTitle>
+                    <DialogDescription className="mt-4 text-muted-foreground">
+                      {feature.description}
+                    </DialogDescription>
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
             </PixelCard>
           );
         })}
