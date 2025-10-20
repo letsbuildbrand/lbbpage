@@ -1,24 +1,24 @@
 "use client";
 
+import React from 'react'; // Explicitly import React
 import { Button } from "@/components/ui/button";
-import StarBorder from "./StarBorder"; // Import the new StarBorder component
-import ModelViewer from "@/components/ModelViewer"; // Import ModelViewer
+import StarBorder from "./StarBorder";
+import ModelViewer from "@/components/ModelViewer";
 
 const HeroSection = () => {
   return (
     <section id="home" className="relative z-10 min-h-screen flex flex-col items-center justify-center text-center p-4 sm:p-8 pt-24">
-      <div className="max-w-6xl mx-auto w-full flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-8"> {/* Added flex container */}
-        {/* Title and description on the left for larger screens */}
-        <div className="lg:order-1 w-full lg:w-1/2 flex flex-col items-center text-center lg:items-start lg:text-left"> {/* Order 1 for left, align text left on large screens */}
-          <div className="flex items-center justify-center lg:justify-start mb-4"> {/* Align title left on large screens */}
-            <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight text-foreground"> {/* Decreased font size */}
+      <div className="max-w-6xl mx-auto w-full flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-8">
+        <div className="lg:order-1 w-full lg:w-1/2 flex flex-col items-center text-center lg:items-start lg:text-left">
+          <div className="flex items-center justify-center lg:justify-start mb-4">
+            <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight text-foreground">
               Let's Build Brand
             </h1>
           </div>
-          <p className="text-lg sm:text-2xl text-muted-foreground mb-6 font-light"> {/* Decreased font size */}
+          <p className="text-lg sm:text-2xl text-muted-foreground mb-6 font-light">
             Crafting Visual Stories & Digital Experiences
           </p>
-          <p className="text-base sm:text-lg text-muted-foreground mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed"> {/* Decreased font size */}
+          <p className="text-base sm:text-lg text-muted-foreground mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
             Specializing in top-tier video editing and bespoke website development solutions for foreign clients. We bring your vision to life with creativity and precision.
           </p>
           <StarBorder as="div" color="hsl(var(--primary))" speed="8s" thickness={2} className="inline-block">
@@ -28,8 +28,7 @@ const HeroSection = () => {
           </StarBorder>
         </div>
 
-        {/* Model Viewer on the right for larger screens */}
-        <div className="lg:order-2 w-full lg:w-1/2 flex justify-center"> {/* Order 2 for right */}
+        <div className="lg:order-2 w-full lg:w-1/2 flex justify-center">
           <ModelViewer
             url="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/main/2.0/ToyCar/glTF-Binary/ToyCar.glb"
             width={500}
@@ -39,9 +38,9 @@ const HeroSection = () => {
             enableManualRotation={true}
             enableManualZoom={true}
             environmentPreset="studio"
-            showScreenshotButton={false} {/* Removed screenshot button */}
-            defaultZoom={1.5} {/* Zoomed out a little more */}
-            modelYOffset={0.1} {/* Moved model slightly upwards */}
+            showScreenshotButton={false}
+            defaultZoom={1.5}
+            modelYOffset={0.1}
           />
         </div>
       </div>
