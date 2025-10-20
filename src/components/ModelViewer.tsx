@@ -5,7 +5,6 @@ import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
 import * as THREE from 'three';
-// Removed: import CanvasConfigurator from './CanvasConfigurator';
 
 const isMeshObject = (object: THREE.Object3D): object is THREE.Mesh => {
   return 'isMesh' in object && object.isMesh === true;
@@ -509,7 +508,7 @@ const ModelViewer: FC<ViewerProps> = ({
         gl={{
           preserveDrawingBuffer: true,
           toneMapping: THREE.ACESFilmicToneMapping,
-          outputColorSpace: THREE.SRGBColorSpace,
+          // Removed: outputColorSpace: THREE.SRGBColorSpace,
         }}
         onCreated={({ gl, scene, camera }) => {
           rendererRef.current = gl;
