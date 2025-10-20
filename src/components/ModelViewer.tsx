@@ -1,7 +1,9 @@
 import { FC, Suspense, useRef, useLayoutEffect, useEffect, useMemo } from 'react';
 import { Canvas, useFrame, useLoader, useThree, invalidate } from '@react-three/fiber';
-import { OrbitControls, useGLTF, useFBX, useProgress, Html, Environment, ContactShadows } from '@react-three/drei';
+import { OrbitControls, useProgress, Html, Environment, ContactShadows } from '@react-three/drei';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
 import * as THREE from 'three';
 
 const isMeshObject = (object: THREE.Object3D): object is THREE.Mesh => {
@@ -136,13 +138,26 @@ const ModelInner: FC<ModelInnerProps> = ({
   const cHov = useRef({ x: 0, y: 0 });
 
   const ext = useMemo(() => url.split('.').pop()!.toLowerCase(), [url]);
-  const content = useMemo<THREE.Object3D | null>(() => {
-    if (ext === 'glb' || ext === 'gltf') return useGLTF(url).scene.clone();
-    if (ext === 'fbx') return useFBX(url).clone();
-    if (ext === 'obj') return useLoader(OBJLoader, url).clone();
+
+  const loader = useMemo(() => {
+    if (ext === 'glb' || ext === 'gltf') return GLTFLoader;
+    if (ext === 'fbx') return FBXLoader;
+    if (ext === 'obj') return OBJLoader;
     console.error('Unsupported format:', ext);
     return null;
-  }, [url, ext]);
+  }, [ext]);
+
+  // Conditionally call useLoader based on whether a loader is available
+  const loadedData = loader ? useLoader(loader, url) : null;
+
+  const content = useMemo<THREE.Object3D | null>(() => {
+    if (!loadedData) return null;
+
+    if (ext === 'glb' || ext === 'gltf') {
+      return (loadedData as any).scene.clone();
+    }
+    return (loadedData as THREE.Object3D).clone();
+  }, [loadedData, ext]);
 
   const pivotW = useRef(new THREE.Vector3());
   useLayoutEffect(() => {
@@ -420,7 +435,7 @@ const ModelViewer: FC<ViewerProps> = ({
   autoRotateSpeed = 0.35,
   onModelLoaded
 }) => {
-  useEffect(() => void useGLTF.preload(url), [url]);
+  // useGLTF.preload(url) is now handled by the dynamic useLoader in ModelInner
   const pivot = useRef(new THREE.Vector3()).current;
   const contactRef = useRef<THREE.Mesh>(null);
   const rendererRef = useRef<THREE.WebGLRenderer>(null);
