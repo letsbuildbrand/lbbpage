@@ -7,25 +7,25 @@
 @layer base {
   :root {
     --background: 0 0% 100%; /* White */
-    --foreground: 1 60% 10%; /* Deep Maroon */
+    --foreground: 351 100% 14%; /* New Deep Maroon */
 
     --card: 0 0% 100%; /* White */
-    --card-foreground: 1 60% 10%; /* Deep Maroon */
+    --card-foreground: 351 100% 14%; /* New Deep Maroon */
 
     --popover: 0 0% 100%; /* White */
-    --popover-foreground: 1 60% 10%; /* Deep Maroon */
+    --popover-foreground: 351 100% 14%; /* New Deep Maroon */
 
     --primary: 45 95% 60%; /* Golden Yellow */
-    --primary-foreground: 1 60% 10%; /* Deep Maroon */
+    --primary-foreground: 351 100% 14%; /* New Deep Maroon */
 
     --secondary: 260 70% 40%; /* Purple */
-    --secondary-foreground: 1 60% 10%; /* Deep Maroon */
+    --secondary-foreground: 351 100% 14%; /* New Deep Maroon */
 
     --muted: 210 40% 96.1%; /* Light grey */
     --muted-foreground: 215.4 16.3% 46.9%; /* Medium grey */
 
     --accent: 260 70% 40%; /* Purple */
-    --accent-foreground: 1 60% 10%; /* Deep Maroon */
+    --accent-foreground: 351 100% 14%; /* New Deep Maroon */
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -45,26 +45,26 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
 
-    --maroon-background: 1 60% 10%; /* Deep Maroon for consistent navbar background */
+    --maroon-background: 351 100% 14%; /* New Deep Maroon for consistent navbar background */
   }
 
   .dark {
-    --background: 1 60% 10%; /* Deep Maroon */
+    --background: 351 100% 14%; /* New Deep Maroon */
     --foreground: 45 95% 90%; /* Very light golden yellow */
 
-    --card: 1 60% 12%; /* Slightly lighter maroon */
+    --card: 351 100% 16%; /* Slightly lighter new maroon */
     --card-foreground: 45 95% 90%;
 
-    --popover: 1 60% 12%; /* Slightly lighter maroon */
+    --popover: 351 100% 16%; /* Slightly lighter new maroon */
     --popover-foreground: 45 95% 90%;
 
     --primary: 45 95% 60%; /* Golden Yellow */
-    --primary-foreground: 1 60% 10%; /* Deep Maroon */
+    --primary-foreground: 351 100% 14%; /* New Deep Maroon */
 
     --secondary: 260 70% 40%; /* Purple */
     --secondary-foreground: 45 95% 90%;
 
-    --muted: 1 60% 15%; /* Lighter maroon for muted */
+    --muted: 351 100% 19%; /* Lighter new maroon for muted */
     --muted-foreground: 45 95% 70%; /* Softer golden yellow */
 
     --accent: 260 70% 40%; /* Purple */
@@ -73,20 +73,20 @@
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 1 60% 20%; /* Darker maroon for borders */
-    --input: 1 60% 20%; /* Darker maroon for input */
+    --border: 351 100% 24%; /* Darker new maroon for borders */
+    --input: 351 100% 24%; /* Darker new maroon for input */
     --ring: 45 95% 60%; /* Golden Yellow */
 
-    --sidebar-background: 1 60% 10%;
+    --sidebar-background: 351 100% 14%; /* New Deep Maroon */
     --sidebar-foreground: 45 95% 90%;
     --sidebar-primary: 45 95% 60%;
-    --sidebar-primary-foreground: 1 60% 10%;
+    --sidebar-primary-foreground: 351 100% 14%; /* New Deep Maroon */
     --sidebar-accent: 260 70% 40%;
     --sidebar-accent-foreground: 45 95% 90%;
-    --sidebar-border: 1 60% 20%;
+    --sidebar-border: 351 100% 24%; /* Darker new maroon */
     --sidebar-ring: 45 95% 60%;
 
-    --maroon-background: 1 60% 10%; /* Deep Maroon for consistent navbar background */
+    --maroon-background: 351 100% 14%; /* New Deep Maroon for consistent navbar background */
   }
 }
 
