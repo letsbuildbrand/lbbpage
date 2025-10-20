@@ -16,7 +16,7 @@ const HeroSection = () => {
         <p className="text-lg sm:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
           Specializing in top-tier video editing and bespoke website development solutions for foreign clients. We bring your vision to life with creativity and precision.
         </p>
-        <StarBorder as="button" color="hsl(var(--primary))" speed="8s" thickness={2} className="inline-block">
+        <StarBorder as="div" color="hsl(var(--primary))" speed="8s" thickness={2} className="inline-block">
           <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg sm:text-xl px-8 py-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
             Get a Free Consultation
           </Button>
