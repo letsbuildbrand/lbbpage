@@ -138,7 +138,10 @@ const ModelInner: FC<ModelInnerProps> = ({
   const tHov = useRef({ x: 0, y: 0 });
   const cHov = useRef({ x: 0, y: 0 }); // Corrected initialization
 
-  const ext = useMemo(() => url.split('.').pop()!.toLowerCase(), [url]);
+  const ext = useMemo(() => {
+    const urlWithoutQuery = url.split('?')[0]; // Remove query parameters
+    return urlWithoutQuery.split('.').pop()!.toLowerCase();
+  }, [url]);
 
   const loader = useMemo(() => {
     if (ext === 'glb' || ext === 'gltf') return GLTFLoader;
