@@ -63,10 +63,10 @@
   display: flex;
   align-items: center;
   height: var(--nav-h);
-  background: hsla(var(--maroon-background), 0.6); /* Changed to maroon background */
+  background: var(--base-color);
   border-radius: 9999px;
-  backdrop-filter: blur(10px); /* Frosted glass effect */
-  border: 1px solid hsla(var(--maroon-background), 0.8); /* Updated border to maroon */
+  /* Removed backdrop-filter for opaque effect */
+  border: 1px solid var(--base-color); /* Opaque border */
   box-shadow: 0 0 15px hsla(var(--primary), 0.3), 0 0 30px hsla(var(--primary), 0.1); /* Glowing shadow */
   transition: all 0.3s ease;
   overflow: hidden; /* Ensure gradients are clipped */
@@ -107,13 +107,13 @@
   width: var(--nav-h);
   height: var(--nav-h);
   border-radius: 50%;
-  background: hsla(var(--maroon-background), 0.8); /* Changed to maroon background */
+  background: var(--base-color);
   padding: 8px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border: 1px solid hsla(var(--maroon-background), 0.8); /* Updated border to maroon */
+  border: 1px solid var(--base-color); /* Opaque border */
   box-shadow: 0 0 10px hsla(var(--primary), 0.2);
   transition: all 0.3s ease;
   position: relative; /* Ensure pseudo-elements are positioned relative to this */
@@ -179,8 +179,8 @@
   justify-content: center;
   height: 100%;
   padding: 0 var(--pill-pad-x);
-  background: transparent; /* Transparent by default */
-  color: hsl(var(--foreground)); /* Text color from foreground */
+  background: var(--pill-bg-color);
+  color: var(--pill-text-color);
   text-decoration: none;
   border-radius: 9999px;
   box-sizing: border-box;
@@ -201,7 +201,7 @@
   left: 50%;
   bottom: 0;
   border-radius: 50%;
-  background: hsla(var(--primary), 0.8); /* Glowing hover circle */
+  background: var(--base-color);
   z-index: 1;
   display: block;
   pointer-events: none;
@@ -221,29 +221,29 @@
   display: inline-block;
   line-height: 1;
   will-change: transform;
-  color: hsl(var(--foreground)); /* Default text color */
+  color: var(--pill-text-color);
 }
 
 .pill .pill-label-hover {
   position: absolute;
   left: 0;
   top: 0;
-  color: hsl(var(--primary-foreground)); /* Text color on hover */
+  color: var(--hovered-pill-text-color);
   z-index: 3;
   display: inline-block;
   will-change: transform, opacity;
 }
 
 .pill:hover {
-  background: hsla(var(--primary), 0.2); /* Subtle background on hover */
+  background: var(--base-color);
   box-shadow: 0 0 10px hsla(var(--primary), 0.5); /* Glow on hover */
-  color: hsl(var(--primary-foreground));
+  color: var(--hovered-pill-text-color);
 }
 
 .pill.is-active {
-  background: hsla(var(--primary), 0.4); /* Active pill background */
+  background: var(--base-color);
   box-shadow: 0 0 15px hsla(var(--primary), 0.7), 0 0 25px hsla(var(--primary), 0.3); /* Stronger glow for active */
-  color: hsl(var(--primary-foreground));
+  color: var(--hovered-pill-text-color);
 }
 
 .pill.is-active::after {
@@ -254,7 +254,7 @@
   transform: translateX(-50%);
   width: 12px;
   height: 12px;
-  background: hsl(var(--primary)); /* Active indicator color */
+  background: var(--base-color);
   border-radius: 50px;
   z-index: 4;
 }
@@ -281,12 +281,18 @@
   }
 }
 
+.mobile-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .mobile-menu-button {
   width: var(--nav-h);
   height: var(--nav-h);
   border-radius: 50%;
-  background: hsla(var(--maroon-background), 0.8); /* Changed to maroon background */
-  border: 1px solid hsla(var(--maroon-background), 0.8); /* Updated border to maroon */
+  background: var(--base-color);
+  border: 1px solid var(--base-color);
   box-shadow: 0 0 10px hsla(var(--primary), 0.2);
   display: flex; /* Ensure it's flex for lines */
   flex-direction: column;
@@ -302,7 +308,7 @@
 .hamburger-line {
   width: 16px;
   height: 2px;
-  background: hsl(var(--foreground)); /* Hamburger lines match foreground */
+  background: var(--pill-bg-color);
   border-radius: 1px;
   transition: all 0.01s ease;
   transform-origin: center;
@@ -313,10 +319,10 @@
   top: 3em;
   left: 1rem;
   right: 1rem;
-  background: hsla(var(--maroon-background), 0.9); /* Changed to maroon background */
+  background: var(--base-color);
   border-radius: 27px;
-  box-shadow: 0 8px 32px hsla(var(--primary), 0.2); /* Subtle shadow */
-  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  /* Removed backdrop-filter for opaque effect */
   z-index: 998;
   opacity: 0;
   transform-origin: top center;
@@ -335,8 +341,8 @@
 .mobile-menu-popover .mobile-menu-link {
   display: block;
   padding: 12px 16px;
-  color: hsl(var(--foreground)); /* Text color from foreground */
-  background-color: hsla(var(--maroon-background), 0.7); /* Changed to maroon background */
+  color: var(--pill-text-color);
+  background-color: var(--pill-bg-color);
   text-decoration: none;
   font-size: 16px;
   font-weight: 500;
@@ -346,24 +352,24 @@
 
 .mobile-menu-popover .mobile-menu-link:hover {
   cursor: pointer;
-  background-color: hsla(var(--primary), 0.2); /* Hover background */
-  color: hsl(var(--primary-foreground)); /* Hover text color */
+  background-color: var(--base-color);
+  color: var(--hovered-pill-text-color);
 }
 
 /* Styling for the ThemeToggle button to fit the PillNav aesthetic */
 .theme-toggle-desktop .h-9.w-9,
 .mobile-controls .h-9.w-9 {
-  background: hsla(var(--maroon-background), 0.8); /* Changed to maroon background */
-  border: 1px solid hsla(var(--maroon-background), 0.8); /* Updated border to maroon */
-  box-shadow: 0 0 10px hsla(var(--primary), 0.2);
+  background: var(--base-color);
+  border: 1px solid var(--base-color);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   border-radius: 50%;
   transition: all 0.3s ease;
 }
 
 .theme-toggle-desktop .h-9.w-9:hover,
 .mobile-controls .h-9.w-9:hover {
-  background: hsla(var(--primary), 0.2);
-  box-shadow: 0 0 10px hsla(var(--primary), 0.5);
+  background: var(--pill-bg-color);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .theme-toggle-desktop {

@@ -17,6 +17,10 @@ export interface PillNavProps {
   activeHref?: string;
   className?: string;
   ease?: string;
+  baseColor?: string;
+  pillColor?: string;
+  hoveredPillTextColor?: string;
+  pillTextColor?: string;
   onMobileMenuClick?: () => void;
   initialLoadAnimation?: boolean;
 }
@@ -28,9 +32,14 @@ const PillNav: React.FC<PillNavProps> = ({
   activeHref,
   className = '',
   ease = 'power3.easeOut',
+  baseColor = '#060010', // Dark maroon-like color
+  pillColor = '#ffffff', // White for pills
+  hoveredPillTextColor = '#060010', // Dark text on hover
+  pillTextColor,
   onMobileMenuClick,
   initialLoadAnimation = true
 }) => {
+  const resolvedPillTextColor = pillTextColor ?? baseColor;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const circleRefs = useRef<Array<HTMLSpanElement | null>>([]);
   const tlRefs = useRef<Array<gsap.core.Timeline | null>>([]);
@@ -228,9 +237,16 @@ const PillNav: React.FC<PillNavProps> = ({
 
   const isRouterLink = (href?: string) => href && !isExternalLink(href);
 
+  const cssVars = {
+    '--base-color': baseColor,
+    '--pill-bg-color': pillColor,
+    '--hovered-pill-text-color': hoveredPillTextColor,
+    '--pill-text-color': resolvedPillTextColor
+  } as React.CSSProperties;
+
   return (
     <div className="pill-nav-container">
-      <nav className={`pill-nav ${className}`} aria-label="Primary">
+      <nav className={`pill-nav ${className}`} aria-label="Primary" style={cssVars}>
         {isRouterLink(items?.[0]?.href) ? (
           <Link
             className="pill-logo"
@@ -331,7 +347,7 @@ const PillNav: React.FC<PillNavProps> = ({
         </div>
       </nav>
 
-      <div className="mobile-menu-popover mobile-only" ref={mobileMenuRef}>
+      <div className="mobile-menu-popover mobile-only" ref={mobileMenuRef} style={cssVars}>
         <ul className="mobile-menu-list">
           {items.map(item => (
             <li key={item.href}>
