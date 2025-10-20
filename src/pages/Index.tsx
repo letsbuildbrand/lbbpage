@@ -5,9 +5,9 @@ import FeaturesSection from "@/components/FeaturesSection";
 import AboutSection from "@/components/AboutSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
-import SplashCursor from "@/components/SplashCursor"; // Re-added
+import SplashCursor from "@/components/SplashCursor";
 import Footer from "@/components/Footer";
-// import ModelViewer from "@/components/ModelViewer"; // Commented out
+import ModelViewer from "@/components/ModelViewer"; // Uncommented
 
 const Index = () => {
   const navItems = [
@@ -21,7 +21,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen flex flex-col relative overflow-hidden">
-      {/* Splash Cursor - Re-added */}
+      {/* Splash Cursor */}
       <SplashCursor
         SIM_RESOLUTION={64}
         DYE_RESOLUTION={720}
@@ -45,7 +45,7 @@ const Index = () => {
       <main className="relative z-10 flex-grow pt-24">
         <HeroSection />
         {/* Example ModelViewer usage */}
-        {/* <div className="flex justify-center items-center py-16">
+        <div className="flex justify-center items-center py-16">
           <ModelViewer
             url="https://assets.science.nasa.gov/content/dam/science/psd/solar/2023/09/e/Earth_1_12756.glb?emrc=68f60299b5bc0"
             width={400}
@@ -56,7 +56,7 @@ const Index = () => {
             enableManualZoom={true}
             environmentPreset="studio"
           />
-        </div> */}
+        </div>
         <ServicesSection />
         <FeaturesSection />
         <AboutSection />
