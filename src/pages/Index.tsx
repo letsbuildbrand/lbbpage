@@ -7,7 +7,8 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
 import SplashCursor from "@/components/SplashCursor";
 import Footer from "@/components/Footer";
-import ModelViewer from "@/components/ModelViewer";
+// ModelViewer import removed as it's moved to HeroSection
+// import ModelViewer from "@/components/ModelViewer"; 
 
 const Index = () => {
   const navItems = [
@@ -44,19 +45,7 @@ const Index = () => {
       {/* Main Content Sections */}
       <main className="relative z-10 flex-grow pt-24">
         <HeroSection />
-        {/* ModelViewer with adjusted styling for visibility */}
-        <div className="relative z-20 flex justify-center items-center py-16 bg-background">
-          <ModelViewer
-            url="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/main/2.0/ToyCar/glTF-Binary/ToyCar.glb"
-            width={400}
-            height={400}
-            autoRotate={true}
-            autoRotateSpeed={0.5}
-            enableManualRotation={true}
-            enableManualZoom={true}
-            environmentPreset="studio"
-          />
-        </div>
+        {/* ModelViewer div removed from here */}
         <ServicesSection />
         <FeaturesSection />
         <AboutSection />
