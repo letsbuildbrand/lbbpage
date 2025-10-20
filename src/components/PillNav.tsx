@@ -32,10 +32,10 @@ const PillNav: React.FC<PillNavProps> = ({
   activeHref,
   className = '',
   ease = 'power3.easeOut',
-  baseColor = '#060010', // Dark maroon-like color
-  pillColor = '#ffffff', // White for pills
-  hoveredPillTextColor = '#060010', // Dark text on hover
-  pillTextColor,
+  baseColor = 'hsl(var(--maroon-background))', // Use maroon for base
+  pillColor = 'hsl(var(--background))', // Use background for default pill
+  hoveredPillTextColor = 'hsl(var(--primary-foreground))', // Use primary-foreground for hovered text
+  pillTextColor = 'hsl(var(--foreground))', // Use foreground for default pill text
   onMobileMenuClick,
   initialLoadAnimation = true
 }) => {
