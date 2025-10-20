@@ -61,6 +61,11 @@ const Loader: FC<{ placeholderSrc?: string }> = ({ placeholderSrc }) => {
       ) : (
         `${Math.round(progress)} %`
       )}
+      {/* Temporary Box for debugging */}
+      <mesh>
+        <boxGeometry args={[1, 1, 1]} />
+        <meshStandardMaterial color="white" />
+      </mesh>
     </Html>
   );
 };
@@ -137,20 +142,28 @@ const ModelInner: FC<ModelInnerProps> = ({
 
   const ext = useMemo(() => url.split('.').pop()!.toLowerCase(), [url]);
   const content = useMemo<THREE.Object3D | null>(() => {
-    if (ext === 'glb' || ext === 'gltf') return useGLTF(url).scene.clone();
-    if (ext === 'fbx') return useFBX(url).clone();
-    if (ext === 'obj') return useLoader(OBJLoader, url).clone();
-    console.error('Unsupported format:', ext);
-    return null;
+    try {
+      if (ext === 'glb' || ext === 'gltf') return useGLTF(url).scene.clone();
+      if (ext === 'fbx') return useFBX(url).clone();
+      if (ext === 'obj') return useLoader(OBJLoader, url).clone();
+      console.error('Unsupported format:', ext);
+      return null;
+    } catch (error) {
+      console.error(`Error loading model ${url}:`, error);
+      return null;
+    }
   }, [url, ext]);
 
   const pivotW = useRef(new THREE.Vector3());
   useLayoutEffect(() => {
-    if (!content) return;
+    if (!content) {
+      console.log('Model content is null, skipping layout effect.');
+      return;
+    }
+    console.log('Model content loaded successfully:', content); // Log when content is processed
     const g = inner.current;
     g.updateWorldMatrix(true, true);
 
-    // Fix: Removed the extra 'new' keyword before THREE.Box3()
     const sphere = new THREE.Box3().setFromObject(g).getBoundingSphere(new THREE.Sphere());
     const s = 1 / (sphere.radius * 2);
     g.position.set(-sphere.center.x, -sphere.center.y, -sphere.center.z);
@@ -176,8 +189,8 @@ const ModelInner: FC<ModelInnerProps> = ({
 
     if (autoFrame && (camera as THREE.PerspectiveCamera).isPerspectiveCamera) {
       const persp = camera as THREE.PerspectiveCamera;
-      const fitR = sphere.radius * 1.2; // Adjusted to use sphere.radius directly
-      const d = (fitR) / Math.sin((persp.fov * Math.PI) / 180 / 2); // Simplified calculation
+      const fitR = sphere.radius * 1.2;
+      const d = (fitR) / Math.sin((persp.fov * Math.PI) / 180 / 2);
       persp.position.set(pivotW.current.x, pivotW.current.y, pivotW.current.z + d);
       persp.near = d / 10;
       persp.far = d * 10;
@@ -206,7 +219,7 @@ const ModelInner: FC<ModelInnerProps> = ({
       }, 16);
       return () => clearInterval(id);
     } else onLoaded?.();
-  }, [content, autoFrame, camera, fadeIn, initPitch, initYaw, pivot]); // Added dependencies
+  }, [content, autoFrame, camera, fadeIn, initPitch, initYaw, pivot, onLoaded]);
 
   useEffect(() => {
     if (!enableManualRotation || isTouch) return;
@@ -328,7 +341,7 @@ const ModelInner: FC<ModelInnerProps> = ({
       window.removeEventListener('pointerup', up);
       window.removeEventListener('pointercancel', up);
     };
-  }, [gl, enableManualRotation, enableManualZoom, minZoom, maxZoom, camera]); // Added camera to dependencies
+  }, [gl, enableManualRotation, enableManualZoom, minZoom, maxZoom, camera]);
 
   useEffect(() => {
     if (isTouch) return;
@@ -345,7 +358,7 @@ const ModelInner: FC<ModelInnerProps> = ({
   }, [enableMouseParallax, enableHoverRotation]);
 
   useFrame((_, dt) => {
-    if (!outer.current) return; // Safety check added here
+    if (!outer.current) return;
 
     let need = false;
     cPar.current.x += (tPar.current.x - cPar.current.x) * PARALLAX_EASE;
@@ -496,7 +509,7 @@ const ModelViewer: FC<ViewerProps> = ({
           sceneRef.current = scene;
           cameraRef.current = camera;
           gl.toneMapping = THREE.ACESFilmicToneMapping;
-          // Removed gl.outputColorSpace = THREE.SRGBColorSpace;
+          gl.outputColorSpace = THREE.SRGBColorSpace; // Re-enabled
         }}
         camera={{ fov: 50, position: [0, 0, camZ], near: 0.01, far: 100 }}
         style={{ touchAction: 'pan-y pinch-zoom' }}
