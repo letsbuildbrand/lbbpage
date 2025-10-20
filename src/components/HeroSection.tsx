@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react'; // Explicitly import React
+import React from 'react';
 import { Button } from "@/components/ui/button";
 import StarBorder from "./StarBorder";
 import ModelViewer from "@/components/ModelViewer";
@@ -34,15 +34,15 @@ const HeroSection = () => {
             width={500}
             height={500}
             autoRotate={true}
-            autoRotateSpeed={0.2} {/* Adjusted for a slower, more natural Earth rotation */}
+            autoRotateSpeed={0.2}
             enableManualRotation={true}
             enableManualZoom={true}
-            environmentPreset="city" {/* Changed to 'city' for a more open, sky-like environment */}
+            environmentPreset="city"
             showScreenshotButton={false}
-            defaultZoom={1.0} {/* Adjusted zoom to better fit the Earth model */}
-            modelYOffset={0.0} {/* Reset Y offset, might need fine-tuning */}
-            defaultRotationX={-20} {/* Slight tilt for Earth */}
-            defaultRotationY={45} {/* Initial rotation */}
+            defaultZoom={1.0}
+            modelYOffset={0.0}
+            defaultRotationX={-20}
+            defaultRotationY={45}
           />
         </div>
       </div>
