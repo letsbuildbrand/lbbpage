@@ -5,7 +5,7 @@ import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
 import * as THREE from 'three';
-import CanvasConfigurator from './CanvasConfigurator'; // Import the new component
+// Removed: import CanvasConfigurator from './CanvasConfigurator';
 
 const isMeshObject = (object: THREE.Object3D): object is THREE.Mesh => {
   return 'isMesh' in object && object.isMesh === true;
@@ -136,7 +136,7 @@ const ModelInner: FC<ModelInnerProps> = ({
   const tPar = useRef({ x: 0, y: 0 });
   const cPar = useRef({ x: 0, y: 0 });
   const tHov = useRef({ x: 0, y: 0 });
-  const cHov = useRef({ x: 0, y: 0 }); // Corrected initialization
+  const cHov = useRef({ x: 0, y: 0 });
 
   const ext = useMemo(() => {
     const urlWithoutQuery = url.split('?')[0]; // Remove query parameters
@@ -506,21 +506,19 @@ const ModelViewer: FC<ViewerProps> = ({
       <Canvas
         shadows
         frameloop="demand"
-        gl={{ preserveDrawingBuffer: true }}
+        gl={{
+          preserveDrawingBuffer: true,
+          toneMapping: THREE.ACESFilmicToneMapping,
+          outputColorSpace: THREE.SRGBColorSpace,
+        }}
         onCreated={({ gl, scene, camera }) => {
           rendererRef.current = gl;
           sceneRef.current = scene;
           cameraRef.current = camera;
-          // Removed: gl.toneMapping = THREE.ACESFilmicToneMapping;
-          // Removed: gl.outputColorSpace = THREE.SRGBColorSpace;
         }}
         camera={{ fov: 50, position: [0, 0, camZ], near: 0.01, far: 100 }}
         style={{ touchAction: 'pan-y pinch-zoom' }}
       >
-        <CanvasConfigurator
-          toneMapping={THREE.ACESFilmicToneMapping}
-          outputColorSpace={THREE.SRGBColorSpace}
-        />
         {environmentPreset !== 'none' && <Environment preset={environmentPreset as any} background={false} />}
 
         <ambientLight intensity={ambientIntensity} />
