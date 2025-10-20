@@ -68,6 +68,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  border-radius: 50%; /* Added to make the image itself circular */
 }
 
 .pill-list {
