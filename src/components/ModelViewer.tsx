@@ -150,7 +150,8 @@ const ModelInner: FC<ModelInnerProps> = ({
     const g = inner.current;
     g.updateWorldMatrix(true, true);
 
-    const sphere = new new THREE.Box3().setFromObject(g).getBoundingSphere(new THREE.Sphere());
+    // Fix: Removed the extra 'new' keyword before THREE.Box3()
+    const sphere = new THREE.Box3().setFromObject(g).getBoundingSphere(new THREE.Sphere());
     const s = 1 / (sphere.radius * 2);
     g.position.set(-sphere.center.x, -sphere.center.y, -sphere.center.z);
     g.scale.setScalar(s);
