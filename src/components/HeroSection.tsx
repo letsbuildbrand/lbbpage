@@ -30,7 +30,7 @@ const HeroSection = () => {
 
         <div className="lg:order-2 w-full lg:w-1/2 flex justify-center">
           <ModelViewer
-            url="/earth.glb" {/* Updated to use the new earth.glb file */}
+            url="/earth.glb"
             width={500}
             height={500}
             autoRotate={true}
