@@ -150,7 +150,8 @@ const ModelInner: FC<ModelInnerProps> = ({
       console.error('Unsupported model format:', ext);
       return null;
     } catch (error) {
-      console.error(`Error loading model ${url} with extension ${ext}:`, error);
+      // Added more detailed error logging here
+      console.error(`Failed to load model ${url} with extension ${ext}:`, error);
       return null;
     }
   }, [url, ext]);
