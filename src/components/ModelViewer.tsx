@@ -61,11 +61,7 @@ const Loader: FC<{ placeholderSrc?: string }> = ({ placeholderSrc }) => {
       ) : (
         `${Math.round(progress)} %`
       )}
-      {/* Temporary Box for debugging */}
-      <mesh>
-        <boxGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial color="white" />
-      </mesh>
+      {/* Removed temporary Box for debugging */}
     </Html>
   );
 };
@@ -140,16 +136,26 @@ const ModelInner: FC<ModelInnerProps> = ({
   const tHov = useRef({ x: 0, y: 0 });
   const cHov = useRef({ x: 0, y: 0 });
 
-  const ext = useMemo(() => url.split('.').pop()!.toLowerCase(), [url]);
+  // FIX: Correctly extract the file extension by splitting by '?' first
+  const ext = useMemo(() => url.split('?')[0].split('.').pop()!.toLowerCase(), [url]);
   const content = useMemo<THREE.Object3D | null>(() => {
     try {
-      if (ext === 'glb' || ext === 'gltf') return useGLTF(url).scene.clone();
-      if (ext === 'fbx') return useFBX(url).clone();
-      if (ext === 'obj') return useLoader(OBJLoader, url).clone();
-      console.error('Unsupported format:', ext);
+      if (ext === 'glb' || ext === 'gltf') {
+        console.log(`Attempting to load GLTF/GLB model from: ${url}`);
+        return useGLTF(url).scene.clone();
+      }
+      if (ext === 'fbx') {
+        console.log(`Attempting to load FBX model from: ${url}`);
+        return useFBX(url).clone();
+      }
+      if (ext === 'obj') {
+        console.log(`Attempting to load OBJ model from: ${url}`);
+        return useLoader(OBJLoader, url).clone();
+      }
+      console.error('Unsupported model format:', ext);
       return null;
     } catch (error) {
-      console.error(`Error loading model ${url}:`, error);
+      console.error(`Error loading model ${url} with extension ${ext}:`, error);
       return null;
     }
   }, [url, ext]);
@@ -157,10 +163,10 @@ const ModelInner: FC<ModelInnerProps> = ({
   const pivotW = useRef(new THREE.Vector3());
   useLayoutEffect(() => {
     if (!content) {
-      console.log('Model content is null, skipping layout effect.');
+      console.log('Model content is null, skipping layout effect for processing.');
       return;
     }
-    console.log('Model content loaded successfully:', content); // Log when content is processed
+    console.log('Model content processed successfully:', content);
     const g = inner.current;
     g.updateWorldMatrix(true, true);
 
@@ -436,7 +442,8 @@ const ModelViewer: FC<ViewerProps> = ({
   autoRotateSpeed = 0.35,
   onModelLoaded
 }) => {
-  useEffect(() => void useGLTF.preload(url), [url]);
+  // FIX: Preload the cleaned URL
+  useEffect(() => void useGLTF.preload(url.split('?')[0]), [url]);
   const pivot = useRef(new THREE.Vector3()).current;
   const contactRef = useRef<THREE.Mesh>(null);
   const rendererRef = useRef<THREE.WebGLRenderer>(null);
