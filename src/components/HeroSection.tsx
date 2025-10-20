@@ -1,10 +1,8 @@
-"use client";
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import StarBorder from "./StarBorder";
 import ModelViewer from "@/components/ModelViewer";
-import ErrorBoundary from "@/components/ErrorBoundary"; // Import ErrorBoundary
+import ErrorBoundary from "@/components/ErrorBoundary";
 
 const HeroSection = () => {
   return (
@@ -38,7 +36,7 @@ const HeroSection = () => {
               autoRotate={true}
               autoRotateSpeed={0.2}
               enableManualRotation={true}
-              enableManualZoom={false} {/* Changed to false */}
+              enableManualZoom={false}
               environmentPreset="city"
               showScreenshotButton={false}
               defaultZoom={1.0}
