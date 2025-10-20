@@ -1,9 +1,7 @@
 import { FC, Suspense, useRef, useLayoutEffect, useEffect, useMemo } from 'react';
 import { Canvas, useFrame, useLoader, useThree, invalidate } from '@react-three/fiber';
-import { OrbitControls, useProgress, Html, Environment, ContactShadows } from '@react-three/drei';
+import { OrbitControls, useGLTF, useFBX, useProgress, Html, Environment, ContactShadows } from '@react-three/drei';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
 import * as THREE from 'three';
 
 const isMeshObject = (object: THREE.Object3D): object is THREE.Mesh => {
@@ -137,30 +135,14 @@ const ModelInner: FC<ModelInnerProps> = ({
   const tHov = useRef({ x: 0, y: 0 });
   const cHov = useRef({ x: 0, y: 0 });
 
-  const ext = useMemo(() => {
-    const urlWithoutQuery = url.split('?')[0]; // Remove query parameters
-    return urlWithoutQuery.split('.').pop()!.toLowerCase();
-  }, [url]);
-
-  const loader = useMemo(() => {
-    if (ext === 'glb' || ext === 'gltf') return GLTFLoader;
-    if (ext === 'fbx') return FBXLoader;
-    if (ext === 'obj') return OBJLoader;
+  const ext = useMemo(() => url.split('.').pop()!.toLowerCase(), [url]);
+  const content = useMemo<THREE.Object3D | null>(() => {
+    if (ext === 'glb' || ext === 'gltf') return useGLTF(url).scene.clone();
+    if (ext === 'fbx') return useFBX(url).clone();
+    if (ext === 'obj') return useLoader(OBJLoader, url).clone();
     console.error('Unsupported format:', ext);
     return null;
-  }, [ext]);
-
-  // Conditionally call useLoader based on whether a loader is available
-  const loadedData = loader ? useLoader(loader, url) : null;
-
-  const content = useMemo<THREE.Object3D | null>(() => {
-    if (!loadedData) return null;
-
-    if (ext === 'glb' || ext === 'gltf') {
-      return (loadedData as any).scene.clone();
-    }
-    return (loadedData as THREE.Object3D).clone();
-  }, [loadedData, ext]);
+  }, [url, ext]);
 
   const pivotW = useRef(new THREE.Vector3());
   useLayoutEffect(() => {
@@ -260,7 +242,7 @@ const ModelInner: FC<ModelInnerProps> = ({
   }, [gl, enableManualRotation]);
 
   useEffect(() => {
-    if (isTouch) return;
+    if (!isTouch) return;
     const el = gl.domElement;
     const pts = new Map<number, { x: number; y: number }>();
     type Mode = 'idle' | 'decide' | 'rotate' | 'pinch';
@@ -438,7 +420,7 @@ const ModelViewer: FC<ViewerProps> = ({
   autoRotateSpeed = 0.35,
   onModelLoaded
 }) => {
-  // useGLTF.preload(url) is now handled by the dynamic useLoader in ModelInner
+  useEffect(() => void useGLTF.preload(url), [url]);
   const pivot = useRef(new THREE.Vector3()).current;
   const contactRef = useRef<THREE.Mesh>(null);
   const rendererRef = useRef<THREE.WebGLRenderer>(null);
@@ -505,14 +487,13 @@ const ModelViewer: FC<ViewerProps> = ({
       <Canvas
         shadows
         frameloop="demand"
-        // Removed gl prop to use default WebGL context settings
+        gl={{ preserveDrawingBuffer: true }}
         onCreated={({ gl, scene, camera }) => {
           rendererRef.current = gl;
           sceneRef.current = scene;
           cameraRef.current = camera;
-          // Set rendering properties after creation
           gl.toneMapping = THREE.ACESFilmicToneMapping;
-          gl.toneMappingExposure = 1;
+          gl.outputColorSpace = THREE.SRGBColorSpace;
         }}
         camera={{ fov: 50, position: [0, 0, camZ], near: 0.01, far: 100 }}
         style={{ touchAction: 'pan-y pinch-zoom' }}

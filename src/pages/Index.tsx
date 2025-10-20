@@ -47,7 +47,7 @@ const Index = () => {
         {/* ModelViewer with adjusted styling for visibility */}
         <div className="relative z-20 flex justify-center items-center py-16 bg-background">
           <ModelViewer
-            url="https://assets.science.nasa.gov/content/dam/science/psd/solar/2023/09/e/Earth_1_12756.glb?emrc=68f60299b5bc0"
+            url="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/main/2.0/ToyCar/glTF-Binary/ToyCar.glb"
             width={400}
             height={400}
             autoRotate={true}
