@@ -5,9 +5,9 @@ import FeaturesSection from "@/components/FeaturesSection";
 import AboutSection from "@/components/AboutSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
-import SplashCursor from "@/components/SplashCursor";
+// import SplashCursor from "@/components/SplashCursor"; // Temporarily removed
 import Footer from "@/components/Footer";
-import ModelViewer from "@/components/ModelViewer"; // Import ModelViewer
+import ModelViewer from "@/components/ModelViewer";
 
 const Index = () => {
   const navItems = [
@@ -21,28 +21,28 @@ const Index = () => {
 
   return (
     <div className="min-h-screen flex flex-col relative overflow-hidden">
-      {/* Splash Cursor - Optimized for performance */}
-      <SplashCursor
-        SIM_RESOLUTION={64} // Reduced resolution
-        DYE_RESOLUTION={720} // Reduced resolution
-        CAPTURE_RESOLUTION={256} // Reduced resolution
-        DENSITY_DISSIPATION={2.0} // Slightly reduced dissipation
-        VELOCITY_DISSIPATION={1.0} // Slightly reduced dissipation
-        PRESSURE_ITERATIONS={10} // Reduced iterations
-        SPLAT_RADIUS={0.15} // Slightly reduced splat radius
-        SPLAT_FORCE={3000} // Reduced splat force
-      />
+      {/* Splash Cursor - Temporarily removed to check for conflicts */}
+      {/* <SplashCursor
+        SIM_RESOLUTION={64}
+        DYE_RESOLUTION={720}
+        CAPTURE_RESOLUTION={256}
+        DENSITY_DISSIPATION={2.0}
+        VELOCITY_DISSIPATION={1.0}
+        PRESSURE_ITERATIONS={10}
+        SPLAT_RADIUS={0.15}
+        SPLAT_FORCE={3000}
+      /> */}
 
       {/* Navbar */}
       <PillNav
-        logo="/favicon-32x32.png" // Using the new favicon as the logo
+        logo="/favicon-32x32.png"
         logoAlt="LBB Logo"
         items={navItems}
-        activeHref="#home" // You might want to dynamically set this based on scroll position
+        activeHref="#home"
       />
 
       {/* Main Content Sections */}
-      <main className="relative z-10 flex-grow pt-24"> {/* Added pt-24 to account for fixed navbar height and top spacing */}
+      <main className="relative z-10 flex-grow pt-24">
         <HeroSection />
         {/* Example ModelViewer usage */}
         <div className="flex justify-center items-center py-16">
