@@ -4,6 +4,7 @@ import React from 'react';
 import { Button } from "@/components/ui/button";
 import StarBorder from "./StarBorder";
 import ModelViewer from "@/components/ModelViewer";
+import ErrorBoundary from "@/components/ErrorBoundary"; // Import ErrorBoundary
 
 const HeroSection = () => {
   return (
@@ -29,21 +30,23 @@ const HeroSection = () => {
         </div>
 
         <div className="lg:order-2 w-full lg:w-1/2 flex justify-center">
-          <ModelViewer
-            url="/earth.glb"
-            width={500}
-            height={500}
-            autoRotate={true}
-            autoRotateSpeed={0.2}
-            enableManualRotation={true}
-            enableManualZoom={true}
-            environmentPreset="city"
-            showScreenshotButton={false}
-            defaultZoom={1.0}
-            modelYOffset={0.0}
-            defaultRotationX={-20}
-            defaultRotationY={45}
-          />
+          <ErrorBoundary fallback={<p className="text-red-500">Failed to load 3D model.</p>}>
+            <ModelViewer
+              url="/earth.glb"
+              width={500}
+              height={500}
+              autoRotate={true}
+              autoRotateSpeed={0.2}
+              enableManualRotation={true}
+              enableManualZoom={true}
+              environmentPreset="city"
+              showScreenshotButton={false}
+              defaultZoom={1.0}
+              modelYOffset={0.0}
+              defaultRotationX={-20}
+              defaultRotationY={45}
+            />
+          </ErrorBoundary>
         </div>
       </div>
     </section>
