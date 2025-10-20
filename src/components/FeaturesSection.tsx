@@ -1,7 +1,8 @@
+"use client";
+
 import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Lightbulb, Globe, ShieldCheck, TrendingUp, Headset } from "lucide-react"; // Importing icons for features
-import ScrollStack, { ScrollStackItem } from './ScrollStack'; // Import ScrollStack and ScrollStackItem
+import { Lightbulb, Globe, ShieldCheck, TrendingUp, Headset } from "lucide-react";
+import PixelCard from './PixelCard'; // Import PixelCard
 
 const features = [
   {
@@ -32,31 +33,36 @@ const features = [
 ];
 
 const FeaturesSection = () => {
+  // Define classes for bento layout spanning
+  const cardLayoutClasses = [
+    "lg:col-span-2", // First card spans 2 columns on large screens
+    "",             // Second card is normal size
+    "",             // Third card is normal size
+    "lg:col-span-2", // Fourth card spans 2 columns on large screens
+    "",             // Fifth card is normal size
+  ];
+
   return (
     <section id="features" className="relative z-10 bg-card bg-opacity-60 backdrop-blur-sm py-16 px-4 sm:px-8 border-t border-border">
-      <h2 className="text-4xl sm:text-5xl font-extrabold text-foreground mb-12 text-center">Our Key Features</h2>
+      <h2 className="text-4xl sm:text-5xl font-extrabold text-foreground mb-8 text-center">Our Key Features</h2>
       <p className="text-lg sm:text-xl text-muted-foreground mb-10 max-w-3xl text-center leading-relaxed">
         Discover what makes our services stand out. We combine cutting-edge technology with creative expertise to deliver unparalleled results.
       </p>
-      <div className="w-full max-w-6xl mx-auto">
-        <ScrollStack useWindowScroll={true} itemDistance={50} itemStackDistance={20}>
-          {features.map((feature, index) => {
-            const Icon = feature.icon;
-            return (
-              <ScrollStackItem key={index}>
-                <Card className="bg-background p-6 rounded-lg shadow-lg border border-border flex flex-col items-center text-center">
-                  <CardHeader className="flex flex-col items-center p-0 mb-4">
-                    <Icon className="h-12 w-12 text-primary mb-4" />
-                    <CardTitle className="text-xl font-semibold text-foreground">{feature.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="p-0">
-                    <p className="text-muted-foreground text-base leading-relaxed">{feature.description}</p>
-                  </CardContent>
-                </Card>
-              </ScrollStackItem>
-            );
-          })}
-        </ScrollStack>
+      <div className="w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"> {/* Responsive bento grid */}
+        {features.map((feature, index) => {
+          const Icon = feature.icon;
+          return (
+            <PixelCard
+              key={index}
+              className={`flex flex-col items-center justify-center p-6 text-center h-full w-full ${cardLayoutClasses[index]}`}
+              variant={index % 2 === 0 ? 'blue' : 'yellow'} // Alternate pixel card variants for visual interest
+            >
+              <Icon className="h-12 w-12 text-primary mb-4" />
+              <h3 className="text-xl font-semibold text-foreground mb-2">{feature.title}</h3>
+              <p className="text-muted-foreground text-base leading-relaxed">{feature.description}</p>
+            </PixelCard>
+          );
+        })}
       </div>
     </section>
   );
