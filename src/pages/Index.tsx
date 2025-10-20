@@ -1,3 +1,5 @@
+"use client";
+
 import PillNav from "@/components/PillNav";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
