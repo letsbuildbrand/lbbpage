@@ -6,22 +6,8 @@ const HeroSection = () => {
   return (
     <section id="home" className="relative z-10 min-h-screen flex flex-col items-center justify-center text-center p-4 sm:p-8 pt-24">
       <div className="max-w-6xl mx-auto w-full flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-8"> {/* Added flex container */}
-        {/* Model Viewer on the left for larger screens */}
-        <div className="lg:order-1 w-full lg:w-1/3 flex justify-center"> {/* Order 1 for left */}
-          <ModelViewer
-            url="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/main/2.0/ToyCar/glTF-Binary/ToyCar.glb"
-            width={300} // Adjusted size
-            height={300} // Adjusted size
-            autoRotate={true}
-            autoRotateSpeed={0.5}
-            enableManualRotation={true}
-            enableManualZoom={true}
-            environmentPreset="studio"
-          />
-        </div>
-
-        {/* Title and description in the center */}
-        <div className="lg:order-2 w-full lg:w-2/3 flex flex-col items-center text-center"> {/* Order 2 for center */}
+        {/* Title and description on the left for larger screens */}
+        <div className="lg:order-1 w-full lg:w-1/2 flex flex-col items-center text-center"> {/* Order 1 for left */}
           <div className="flex items-center justify-center mb-6">
             <h1 className="text-5xl sm:text-7xl font-extrabold tracking-tight leading-tight text-foreground">
               Let's Build Brand
@@ -38,6 +24,20 @@ const HeroSection = () => {
               Get a Free Consultation
             </Button>
           </StarBorder>
+        </div>
+
+        {/* Model Viewer on the right for larger screens */}
+        <div className="lg:order-2 w-full lg:w-1/2 flex justify-center"> {/* Order 2 for right */}
+          <ModelViewer
+            url="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/main/2.0/ToyCar/glTF-Binary/ToyCar.glb"
+            width={500} // Increased size
+            height={500} // Increased size
+            autoRotate={true}
+            autoRotateSpeed={0.5}
+            enableManualRotation={true}
+            enableManualZoom={true}
+            environmentPreset="studio"
+          />
         </div>
       </div>
     </section>
