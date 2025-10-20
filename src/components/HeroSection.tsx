@@ -38,7 +38,7 @@ const HeroSection = () => {
               autoRotate={true}
               autoRotateSpeed={0.2}
               enableManualRotation={true}
-              enableManualZoom={true}
+              enableManualZoom={false} {/* Changed to false */}
               environmentPreset="city"
               showScreenshotButton={false}
               defaultZoom={1.0}
