@@ -150,7 +150,6 @@ const ModelInner: FC<ModelInnerProps> = ({
       console.error('Unsupported model format:', ext);
       return null;
     } catch (error) {
-      // Added more detailed error logging here
       console.error(`Failed to load model ${url} with extension ${ext}:`, error);
       return null;
     }
@@ -236,6 +235,7 @@ const ModelInner: FC<ModelInnerProps> = ({
     };
     const move = (e: PointerEvent) => {
       if (!drag) return;
+      if (!outer.current) return; // Added null check
       const dx = e.clientX - lx;
       const dy = e.clientY - ly;
       lx = e.clientX;
@@ -311,6 +311,7 @@ const ModelInner: FC<ModelInnerProps> = ({
         const dy = e.clientY - ly;
         lx = e.clientX;
         ly = e.clientY;
+        if (!outer.current) return; // Added null check
         outer.current.rotation.y += dx * ROTATE_SPEED;
         outer.current.rotation.x += dy * ROTATE_SPEED;
         vel.current = { x: dx * ROTATE_SPEED, y: dy * ROTATE_SPEED };
