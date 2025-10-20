@@ -5,7 +5,7 @@ import FeaturesSection from "@/components/FeaturesSection";
 import AboutSection from "@/components/AboutSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
-// import SplashCursor from "@/components/SplashCursor"; // Temporarily removed
+import SplashCursor from "@/components/SplashCursor"; // Re-added
 import Footer from "@/components/Footer";
 // import ModelViewer from "@/components/ModelViewer"; // Commented out
 
@@ -21,8 +21,8 @@ const Index = () => {
 
   return (
     <div className="min-h-screen flex flex-col relative overflow-hidden">
-      {/* Splash Cursor - Temporarily removed to check for conflicts */}
-      {/* <SplashCursor
+      {/* Splash Cursor - Re-added */}
+      <SplashCursor
         SIM_RESOLUTION={64}
         DYE_RESOLUTION={720}
         CAPTURE_RESOLUTION={256}
@@ -31,7 +31,7 @@ const Index = () => {
         PRESSURE_ITERATIONS={10}
         SPLAT_RADIUS={0.15}
         SPLAT_FORCE={3000}
-      /> */}
+      />
 
       {/* Navbar */}
       <PillNav
