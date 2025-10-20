@@ -137,22 +137,18 @@ const ModelInner: FC<ModelInnerProps> = ({
 
   const ext = useMemo(() => url.split('?')[0].split('.').pop()!.toLowerCase(), [url]);
   const content = useMemo<THREE.Object3D | null>(() => {
-    try {
-      if (ext === 'glb' || ext === 'gltf') {
-        return useGLTF(url).scene.clone();
-      }
-      if (ext === 'fbx') {
-        return useFBX(url).clone();
-      }
-      if (ext === 'obj') {
-        return useLoader(OBJLoader, url).clone();
-      }
-      console.error('Unsupported model format:', ext);
-      return null;
-    } catch (error) {
-      console.error(`Failed to load model ${url} with extension ${ext}:`, error);
-      return null;
+    // Removed try...catch block to allow Suspense and ErrorBoundary to handle loading errors
+    if (ext === 'glb' || ext === 'gltf') {
+      return useGLTF(url).scene.clone();
     }
+    if (ext === 'fbx') {
+      return useFBX(url).clone();
+    }
+    if (ext === 'obj') {
+      return useLoader(OBJLoader, url).clone();
+    }
+    console.error('Unsupported model format:', ext);
+    return null;
   }, [url, ext]);
 
   const pivotW = useRef(new THREE.Vector3());
