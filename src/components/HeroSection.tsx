@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import StarBorder from "./StarBorder"; // Import the new StarBorder component
 import ModelViewer from "@/components/ModelViewer"; // Import ModelViewer
