@@ -252,7 +252,7 @@ const ModelInner: FC<ModelInnerProps> = ({
   }, [gl, enableManualRotation]);
 
   useEffect(() => {
-    if (isTouch) return;
+    if (!isTouch) return; // Corrected: This should only run on touch devices
     const el = gl.domElement;
     const pts = new Map<number, { x: number; y: number }>();
     type Mode = 'idle' | 'decide' | 'rotate' | 'pinch';
